@@ -413,12 +413,12 @@ export default function HomePage() {
 										onSubmit={filterDataCars}>
 										<div className='row'>
 											<div className='col-xs-12 col-md-12'>
-												<div className='m-firstSelects'>
+												<div>
 													<div className='col-xs-3'>
 														<select
 															value={selectedItem}
 															onChange={handleSelectChange}>
-															<option value=''>Make</option>
+															<option value=''>Select Make</option>
 															{data.map((item, index) => (
 																<option key={index} value={item.code}>
 																	{item.description}
@@ -431,7 +431,7 @@ export default function HomePage() {
 														<select
 															value={selectmodel}
 															onChange={handleSelectChange3}>
-															<option value=''>Model</option>
+															<option value=''>Select Model</option>
 															{model.map((item, index) => (
 																<option key={index} value={item.code}>
 																	{item.description}
@@ -564,68 +564,68 @@ export default function HomePage() {
 																			alt='nissan'
 																		/>
 
-																		<div className='pclass'>
+																		<div
+																			className=' d-flex b-items__cars-one-info-title'
+																			style={{
+																				fontSize: "16px",
+																				marginLeft: "20px",
+																				marginTop: "10px",
+																			}}>
 																			{" "}
-																			<b>{item.vehManufactureYear} </b>
-																			<b style={{ marginLeft: "5px" }}>
+																			<div>{item.vehManufactureYear} </div>
+																			<div style={{ marginLeft: "5px" }}>
 																				{" "}
 																				{item.vehBrandCode}
-																			</b>{" "}
-																			<b style={{ marginLeft: "5px" }}>
+																			</div>{" "}
+																			<div style={{ marginLeft: "5px" }}>
 																				{item.vehModelCode}{" "}
-																			</b>
-																		</div>
-
-																		<h2
-																			className='b-items__cars-one-info-title'
-																			style={{ marginLeft: "5%" }}
-																			className='d-flex'>
-																			<Link>{item.vehBrandCode}</Link> -{" "}
-																			<Link>{item.vehModelCode}</Link>{" "}
-																			<div
-																				className='b-auto__main-item-info'
-																				style={{ marginLeft: "7%" }}>
-																				<span className='m-price'>
-																					<i className='fa fa-rupee'></i>{" "}
-																					{item.vehSellPriceRecommended}
-																				</span>
 																			</div>
-																		</h2>
+																		</div>
 
 																		<div
-																			className='d-flex m-smallPadding'
-																			style={{ marginTop: "-10%" }}>
-																			<div className=''>
-																				<span className='b-items__cars-one-info-title'>
-																					Year:
-																				</span>
-																				<span className='b-items__cars-one-info-title'>
-																					Color:
-																				</span>
-																				<span className='b-items__cars-one-info-title'>
-																					Kms :
-																				</span>
-																				<span className='b-items__cars-one-info-title'>
-																					Fuel Type:
-																				</span>
-																			</div>
-																			<div className='col-xs-7'>
-																				<span className='b-items__cars-one-info-title'>
-																					{item.vehManufactureYear}
-																				</span>
-																				<span className='b-items__cars-one-info-title'>
+																			id='textitem'
+																			className='d-flex'
+																			style={{
+																				marginTop: "-4px",
+																			}}>
+																			<ul
+																				className='d-flex'
+																				style={{ fontSize: "" }}>
+																				<div className='b'>
+																					{item.vehOdometer} kms
+																				</div>
+
+																				<div
+																					className=''
+																					style={{ marginLeft: "15px" }}>
 																					{item.exteriorColor}
-																				</span>
-																				<span className='b-items__cars-one-info-title'>
-																					{item.vehOdometer}
-																				</span>
-																				<span className='b-items__cars-one-info-title'>
+																				</div>
+																				<div
+																					className=''
+																					style={{ marginLeft: "15px" }}>
 																					{item.vehFuelCode}
-																				</span>
-																			</div>
+																				</div>
+
+																				<div
+																					className=''
+																					style={{ marginLeft: "15px" }}>
+																					{item.transmissionDesc}
+																				</div>
+																			</ul>
 																		</div>
 
-																		<div></div>
+																		<span
+																			style={{
+																				marginLeft: "20px",
+																			}}
+																			className='d-flex ml-6'>
+																			<i className=''></i>{" "}
+																			<div
+																				className='b-items__cars-one-info-title'
+																				style={{ fontSize: "21px" }}>
+																				Rs {item.vehSellPriceRecommended}
+																			</div>
+																		</span>
 																	</div>
 																</Col>
 															</div>
@@ -646,7 +646,7 @@ export default function HomePage() {
 					) : (
 						<>
 							{/* Search Stock data on sale section */}
-							<section className='b-homeAuto'>
+							<section className='b-homeAuto' style={{ marginTop: "-38px" }}>
 								<div className='container-fluid'>
 									<div className='col-xs-12   visible-xs-horizental-scroll'>
 										<div className='b-homeAuto__latest'>
@@ -677,7 +677,7 @@ export default function HomePage() {
 																	onClick={() =>
 																		singleProducthandle(item.uniqueSerial)
 																	}
-																	className='  b-auto__main-item wow zoomInUp'>
+																	className=' card2 b-auto__main-item '>
 																	{/* {console.log(item.modelImages, "data image url")} */}
 																	<img
 																		style={{ width: "100%" }}
@@ -689,48 +689,67 @@ export default function HomePage() {
 																		alt='nissan'
 																	/>
 
-																	<h2 style={{ marginLeft: "105" }}>
-																		<Link>{item.vehBrandCode}</Link> -
-																		<Link>{item.vehModelCode}</Link>
-																	</h2>
-																	<div className='b-auto__main-item-info'>
-																		<span className='m-price'>
-																			<i className='fa fa-rupee'></i>
-																			{item.vehSellPriceRecommended}
-																		</span>
-																	</div>
-																	<div>
-																		<div className='d-flex m-smallPadding'>
-																			<div className=''>
-																				<span className='b-items__cars-one-info-title'>
-																					Model Year:
-																				</span>
-																				<span className='b-items__cars-one-info-title'>
-																					Car Color:
-																				</span>
-																				<span className='b-items__cars-one-info-title'>
-																					Kms Done:
-																				</span>
-																				<span className='b-items__cars-one-info-title'>
-																					Fuel Type:
-																				</span>
-																			</div>
-																			<div className='col-xs-7'>
-																				<span className='b-items__cars-one-info-value'>
-																					{item.vehManufactureYear}
-																				</span>
-																				<span className='b-items__cars-one-info-value'>
-																					{item.exteriorColor}
-																				</span>
-																				<span className='b-items__cars-one-info-value'>
-																					{item.vehOdometer}KM
-																				</span>
-																				<span className='b-items__cars-one-info-value'>
-																					{item.vehFuelCode}
-																				</span>
-																			</div>
+																	<div
+																		className=' d-flex b-items__cars-one-info-title'
+																		style={{
+																			fontSize: "16px",
+																			marginLeft: "20px",
+																		}}>
+																		{" "}
+																		<div>{item.vehManufactureYear} </div>
+																		<div style={{ marginLeft: "5px" }}>
+																			{" "}
+																			{item.vehBrandCode}
+																		</div>{" "}
+																		<div style={{ marginLeft: "5px" }}>
+																			{item.vehModelCode}{" "}
 																		</div>
 																	</div>
+
+																	<div
+																		id='textitem'
+																		className='d-flex'
+																		style={{
+																			marginTop: "-4px",
+																		}}>
+																		<ul
+																			className='d-flex'
+																			style={{ fontSize: "" }}>
+																			<div className='b'>
+																				{item.vehOdometer} kms
+																			</div>
+
+																			<div
+																				className=''
+																				style={{ marginLeft: "20px" }}>
+																				{item.exteriorColor}
+																			</div>
+																			<div
+																				className=''
+																				style={{ marginLeft: "20px" }}>
+																				{item.vehFuelCode}
+																			</div>
+
+																			<div
+																				className=''
+																				style={{ marginLeft: "20px" }}>
+																				{item.transmissionDesc}
+																			</div>
+																		</ul>
+																	</div>
+
+																	<span
+																		style={{
+																			marginLeft: "20px",
+																		}}
+																		className='d-flex ml-6'>
+																		<i className=''></i>{" "}
+																		<div
+																			className='b-items__cars-one-info-title'
+																			style={{ fontSize: "18px" }}>
+																			Rs {item.vehSellPriceRecommended}
+																		</div>
+																	</span>
 																</div>
 															</Col>
 														</div>
@@ -748,114 +767,106 @@ export default function HomePage() {
 					)}
 					{/* Exclusive offers slider */}
 					<section className='b-featured'>
-						<div className='container'>
-							<h2 className='s-title wow zoomInUp'>Exclusive Offers</h2>
-							<Carousel breakPoints={breakPoints}>
-								{stockdata
-									?.filter(
-										(item) =>
-											item.programCode === "SHORT_LIST_WEBSITE_EXCLUSIVE_OFFERS"
-									)
-									.map((item) => (
-										<div key={item.uniqueSerial}>
-											<div>
-												<div className='b-featured__item wow rotateIn p-0 m-0'>
-													<Link style={{ backgroundColor: "black" }}>
+						<div className='container-fluid'>
+							<h2 className='s-title '>Exclusive Offers</h2>
+							<div className='carousel-wrapper'>
+								<Carousel breakPoints={breakPoints}>
+									{stockdata
+										?.filter(
+											(item) =>
+												item.programCode ===
+												"SHORT_LIST_WEBSITE_EXCLUSIVE_OFFERS"
+										)
+										.map((item) => (
+											<div key={item.uniqueSerial}>
+												<div>
+													<div
+														onClick={() =>
+															singleProducthandle(item.uniqueSerial)
+														}
+														className=' card3 b-auto__main-item1 '>
+														{/* {console.log(item.modelImages, "data image url")} */}
 														<img
-															id='pic_hit3'
 															style={{
-																width: "90%",
-																marginLeft: "-38px",
-																marginTop: "-4px",
+																aspectRatio: "/2",
+																width: "100%",
+																// border: "3px solid gray",
+																// borderRadius: "20px",
 															}}
+															className=' '
 															src={
 																item?.modelImages.length > 0 &&
 																item?.modelImages[0].uri
 															}
-															onClick={() =>
-																singleProducthandle(item.uniqueSerial)
-															}
-															alt='mers'
+															alt='nissan'
 														/>
-													</Link>
 
-													<div className=''>
-														{/* <i className='fa fa-rupee'></i> */}
-														{/* {item.rs} */}
-													</div>
-													<div className='clearfix '></div>
-													<h5 id='exclusive'>
-														<Link style={{ maringTop: "2000px" }} to='/detail'>
-															{item.vehBrandCode}
-														</Link>{" "}
-														- <Link>{item.vehModelCode}</Link>
-													</h5>
-													<div className='b-featured__item-count'>
-														<span className='fa fa-tachometer'></span>
-														{item.vehOdometer} KM
-													</div>
-													<div>
 														<div
-															className='d-flex m-smallPadding '
-															style={{ marging: "30px", color: "white" }}
-															// style={{ color: "white" }}
-														>
-															<div className=''>
-																<span
-																	className='b-items__cars-one-info-title'
-																	style={{ color: "white" }}>
-																	Price:
-																</span>
-																<span
-																	className='b-items__cars-one-info-title'
-																	style={{ color: "white" }}>
-																	Model Year:
-																</span>
-																<span
-																	className='b-items__cars-one-info-title'
-																	style={{ color: "white" }}>
-																	Color:
-																</span>
-
-																<span
-																	className='b-items__cars-one-info-title'
-																	style={{ color: "white" }}>
-																	Fuel Type:
-																</span>
-															</div>
-															<div
-																className='col-xs-7'
-																style={{ color: "white" }}>
-																<span
-																	className='b-items__cars-one-info-value'
-																	style={{ color: "white" }}>
-																	{item.vehSellPriceRecommended}
-																</span>
-
-																<span
-																	className='b-items__cars-one-info-value'
-																	style={{ color: "white" }}>
-																	{item.vehManufactureYear}
-																</span>
-																<span
-																	className='b-items__cars-one-info-value'
-																	style={{ color: "white" }}>
-																	{item.exteriorColor}
-																</span>
-
-																<span
-																	className='b-items__cars-one-info-value'
-																	style={{ color: "white" }}>
-																	{item.vehFuelCode}
-																</span>
+															className=' d-flex b-items__cars-one-info-title'
+															style={{
+																fontSize: "16px",
+																marginLeft: "20px",
+																color: "white",
+															}}>
+															{" "}
+															<div>{item.vehManufactureYear} </div>
+															<div style={{ marginLeft: "5px" }}>
+																{" "}
+																{item.vehBrandCode}
+															</div>{" "}
+															<div style={{ marginLeft: "5px" }}>
+																{item.vehModelCode}{" "}
 															</div>
 														</div>
+
+														<div
+															id='textitem'
+															className='d-flex'
+															style={{
+																marginTop: "-4px",
+																color: "white",
+															}}>
+															<ul className='d-flex' style={{ fontSize: "" }}>
+																<div className='b'>{item.vehOdometer} kms</div>
+
+																<div
+																	className=''
+																	style={{ marginLeft: "15px" }}>
+																	{item.exteriorColor}
+																</div>
+																<div
+																	className=''
+																	style={{ marginLeft: "15px" }}>
+																	{item.vehFuelCode}
+																</div>
+
+																<div
+																	className=''
+																	style={{ marginLeft: "15px" }}>
+																	{item.transmissionDesc}
+																</div>
+															</ul>
+														</div>
+
+														<span
+															style={{
+																marginLeft: "20px",
+																color: "white",
+															}}
+															className='d-flex ml-6'>
+															<i className=''></i>{" "}
+															<div
+																className='b-items__cars-one-info-title'
+																style={{ fontSize: "21px", color: "white" }}>
+																Rs {item.vehSellPriceRecommended}
+															</div>
+														</span>
 													</div>
 												</div>
 											</div>
-										</div>
-									))}
-							</Carousel>
+										))}
+								</Carousel>
+							</div>
 
 							{/* slide checking */}
 						</div>
@@ -872,7 +883,7 @@ WELCOME TO SUSHIL CARS  section */}
 								<div className='col-md-3 col-lg-3 col-xs-12'>
 									<div className='row'>
 										<div className='col-xs-12 m-padding'>
-											<div className='b-welcome__services-auto wow zoomInLeft'>
+											<div className='b-welcome__services-auto wow '>
 												<div className='b-welcome__services-img m-auto'>
 													<Link to='/carloans'>
 														<span
@@ -881,7 +892,7 @@ WELCOME TO SUSHIL CARS  section */}
 													</Link>
 												</div>
 
-												<h3>AUTO LOANS</h3>
+												<h3>Auto Loans</h3>
 											</div>
 										</div>
 										<div className='col-xs-12 text-right visible-md visible-lg'>
@@ -890,7 +901,7 @@ WELCOME TO SUSHIL CARS  section */}
 											</div>
 										</div>
 										<div className='col-xs-12 m-padding'>
-											<div className='b-welcome__services-buying wow zoomInLeft'>
+											<div className='b-welcome__services-buying wow '>
 												<div className='b-welcome__services-img m-buying'>
 													<span
 														style={{ marginLeft: "25px" }}
@@ -902,7 +913,7 @@ WELCOME TO SUSHIL CARS  section */}
 									</div>
 								</div>
 								<div className='col-md-6 col-lg-6 col-xs-12'>
-									<div className='b-welcome__text wow zoomInUp'>
+									<div className='b-welcome__text wow '>
 										<h2>INDIA'S LEADING CAR DEALER</h2>
 										<h3>WELCOME TO SUSHIL CARS</h3>
 										<p>
@@ -934,7 +945,7 @@ WELCOME TO SUSHIL CARS  section */}
 								<div className='col-md-3 col-lg-3 col-xs-12'>
 									<div className='row'>
 										<div className='col-xs-12 m-padding'>
-											<div className='b-welcome__services-trade wow zoomInRight'>
+											<div className='b-welcome__services-trade wow '>
 												<div className='b-welcome__services-img m-trade'>
 													<Link to='/insurence'>
 														<span
@@ -953,7 +964,7 @@ WELCOME TO SUSHIL CARS  section */}
 									</div>
 									<div className='row'>
 										<div className='col-xs-12 m-padding'>
-											<div className='b-welcome__services-trade wow zoomInRight'>
+											<div className='b-welcome__services-trade wow '>
 												<div className='b-welcome__services-img m-trade'>
 													<Link to='/emical'>
 														<span
@@ -981,11 +992,10 @@ WELCOME TO SUSHIL CARS  section */}
 										<div className='col-md-10'>
 											<div className='sms-sec__item'>
 												<div
-													className='getng_t_text wow fadeInDown animated'
+													className='getng_t_text wow  '
 													style={{
 														visibility: "visible",
 														animationDelay: "0s",
-														animationName: "fadeInDown",
 													}}>
 													<p
 														className='hidden-xs'
@@ -1018,11 +1028,10 @@ WELCOME TO SUSHIL CARS  section */}
 													</p>
 												</div>
 												<div
-													className='getng_btns wow fadeInDown animated'
+													className='getng_btns wow  '
 													style={{
 														visibility: "visible",
 														animationDelay: "0.3s",
-														animationName: "fadeInDown",
 													}}>
 													<a target='_blank' className='apkbtn'>
 														<img
@@ -1087,7 +1096,7 @@ WELCOME TO SUSHIL CARS  section */}
 						<div className='container'>
 							<div className='row'>
 								<div className='col-md-6 col-sm-10 col-sm-offset-1 col-md-offset-0 col-xs-12'>
-									<div className='b-asks__first wow zoomInLeft'>
+									<div className='b-asks__first wow '>
 										<div className='b-asks__first-circle'>
 											<span className='fa fa-search'></span>
 										</div>
@@ -1106,7 +1115,7 @@ WELCOME TO SUSHIL CARS  section */}
 									</div>
 								</div>
 								<div className='col-md-6 col-sm-10 col-sm-offset-1 col-xs-12 col-md-offset-0'>
-									<div className='b-asks__first m-second wow zoomInRight'>
+									<div className='b-asks__first m-second wow '>
 										<div className='b-asks__first-circle'>
 											<span className='fa fa-rupee'></span>
 										</div>

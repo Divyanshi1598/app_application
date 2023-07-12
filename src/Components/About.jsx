@@ -104,7 +104,7 @@ function About({ reloadPage }) {
 				</section>
 				<section
 					className='b-what s-shadow m-home'
-					style={{ marginTop: "-150px" }}>
+					style={{ marginTop: "-80px" }}>
 					<div className='container'>
 						<h3 className='s-titleBg wow zoomInUp' data-wow-delay='0.5s'>
 							CUSTOMERS ARE IMPORTANT FOR US

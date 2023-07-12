@@ -249,7 +249,7 @@ const Submit2 = () => {
 				</section>
 
 				<div className='b-breadCumbs s-shadow'>
-					<div className='container wow zoomInUp' data-wow-delay='0.5s'>
+					<div className='container wow' data-wow-delay='0.5s'>
 						<a href='home.html' className='b-breadCumbs__page'>
 							Home
 						</a>
@@ -267,7 +267,7 @@ const Submit2 = () => {
 						<div className='col-lg-3 col-md-4 col-sm-5 col-xs-6'>
 							<aside className='b-submit__aside'>
 								<div
-									className='b-submit__aside-step m-active wow zoomInUp'
+									className='b-submit__aside-step m-active wow'
 									data-wow-delay='0.3s'>
 									<h3>Step 1</h3>
 									<div className='b-submit__aside-step-inner m-active clearfix'>
@@ -283,7 +283,7 @@ const Submit2 = () => {
 								</div>
 
 								<div
-									className='b-submit__aside-step m-active wow zoomInUp'
+									className='b-submit__aside-step m-active wow'
 									data-wow-delay='0.3s'>
 									<h3>Step 2</h3>
 									<div className='b-submit__aside-step-inner m-active clearfix'>
@@ -303,7 +303,7 @@ const Submit2 = () => {
 							<div className='b-submit__main'>
 								<form className='s-submit'>
 									<div
-										className='b-submit__main-contacts wow zoomInUp'
+										className='b-submit__main-contacts wow'
 										data-wow-delay='0.3s'>
 										<header className='s-headerSubmit s-lineDownLeft'>
 											<h2>Contact Details</h2>
@@ -317,6 +317,7 @@ const Submit2 = () => {
 													</label>
 													<input
 														type='text'
+														placeholder='please enter name'
 														name='name'
 														onChange={(e) => setname(e.target.value)}
 													/>
@@ -330,6 +331,7 @@ const Submit2 = () => {
 													<input
 														type='text'
 														name='email'
+														placeholder='please enter email id'
 														onChange={(e) => setemail(e.target.value)}
 													/>
 												</div>
@@ -345,13 +347,14 @@ const Submit2 = () => {
 													<input
 														type='text'
 														name='mobile'
+														placeholder='please enter mobile no.'
 														onChange={(e) => setmobile(e.target.value)}
 													/>
 												</div>
 											</div>
 											<div className='col-md-6 col-xs-12'>
 												<div
-													className='b-submit__main-element wow zoomInUp'
+													className='b-submit__main-element wow'
 													data-wow-delay='0.5s'>
 													<label style={{ color: "black" }}>
 														State <span>*</span>
@@ -361,7 +364,7 @@ const Submit2 = () => {
 															className='m-select'
 															value={selectedstate}
 															onChange={handleSelectChange11}>
-															<option value='regnCity'>Select an item</option>
+															<option value='regnCity'>Select item</option>
 															{statelist.map((item, index) => (
 																<option key={index} value={item.code}>
 																	{item.description}
@@ -376,7 +379,7 @@ const Submit2 = () => {
 										<div className='row'>
 											<div className='col-md-6 col-xs-12'>
 												<div
-													className='b-submit__main-element wow zoomInUp'
+													className='b-submit__main-element wow'
 													data-wow-delay='0.5s'>
 													<label style={{ color: "black" }}>
 														City <span>*</span>
@@ -386,7 +389,7 @@ const Submit2 = () => {
 															className='m-select'
 															value={selectcity}
 															onChange={handleSelectChange12}>
-															<option value='regnCity'>Select an item</option>
+															<option value='regnCity'>Select item</option>
 															{city.map((item, index) => (
 																<option key={index} value={item.code}>
 																	{item.description}
@@ -399,7 +402,7 @@ const Submit2 = () => {
 											</div>
 											<div className='col-md-6 col-xs-12'>
 												<div
-													className='b-submit__main-element wow zoomInUp'
+													className='b-submit__main-element wow'
 													data-wow-delay='0.5s'>
 													<form>
 														<span
@@ -418,7 +421,11 @@ const Submit2 = () => {
 																aria-hidden='true'></i>
 														</span>
 
-														<label style={{ color: "black" }}></label>
+														<label
+															style={{
+																color: "black",
+																mrginTop: "-70px",
+															}}></label>
 														<div className='d-flex'>
 															<input
 																className='s-relative'
@@ -453,7 +460,7 @@ const Submit2 = () => {
 													marginTop: "30px",
 												}}
 												type='submit'
-												className='btn m-btn pull-right wow zoomInUp btn-danger'
+												className='btn m-btn pull-right wow btn-danger'
 												data-wow-delay='0.3s'>
 												Click to &amp; Back
 												<span className='fa fa-arrow-left'></span>
@@ -466,7 +473,7 @@ const Submit2 = () => {
 												onClick={handleSubmit}
 												data-toggle='modal'
 												href='#ignismyModal'
-												className='btn m-btn pull-right wow zoomInUp btn-danger'
+												className='btn m-btn pull-right wow btn-danger'
 												data-wow-delay='0.3s'>
 												Click to &amp; Raise Request
 												<span className='fa fa-check'></span>
@@ -517,7 +524,7 @@ const Submit2 = () => {
 																					alt=''
 																				/>
 																				<h4
-																					className='hidden-xs'
+																					className=''
 																					style={{
 																						marginTop: "10px",
 																						marginLeft: "140px",
@@ -527,7 +534,7 @@ const Submit2 = () => {
 																			contact you shortly! */}
 																				</h4>
 
-																				<h4
+																				{/* <h4
 																					className='visible-xs'
 																					style={{
 																						marginTop: "10px",
@@ -536,10 +543,10 @@ const Submit2 = () => {
 																					Are you sure to raise enquiry??
 																					{/* Your request has been received. We will
 																			contact you shortly! */}
-																				</h4>
+																				{/* </h4>  */}
 																				<p></p>
 																				<div
-																					className='d-flex hidden-xs'
+																					className='d-flex'
 																					style={{
 																						marginLeft: "150px",
 																					}}>
@@ -650,9 +657,7 @@ const Submit2 = () => {
 						<div className='col-md-3 col-xs-6'></div>
 
 						<div className='col-md-5 col-xs-6'>
-							<address
-								className='b-info__contacts wow zoomInUp'
-								data-wow-delay='0.3s'>
+							<address className='b-info__contacts wow' data-wow-delay='0.3s'>
 								<p>contact us</p>
 								<div className='b-info__contacts-item'>
 									<span className='fa fa-map-marker'></span>

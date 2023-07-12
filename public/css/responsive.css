@@ -56,7 +56,18 @@
 	}
 }
 
-@media (max-width: 767px) {
+/* .b-auto__main-item img {
+	width: 100%;
+	transition: 0.2s all ease-in-out;
+	margin-bottom: 4px;
+	border-radius: 12px !important;
+	border: 2px solid #999;
+	min-height: 560px !important;
+	height: 500px !important;
+	object-fit: cover !important;
+} */
+
+/* @media (max-width: 767px) {
 	#phoneView {
 		margin-left: 150px;
 	}
@@ -120,7 +131,7 @@
 		border-bottom: 1px solid #eeeeee;
 		text-align: center;
 	}
-}
+} */
 
 @media screen and (max-width: 1920px) and (min-width: 1500px) {
 	.container {

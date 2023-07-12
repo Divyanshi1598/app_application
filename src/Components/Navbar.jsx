@@ -107,18 +107,13 @@ const Navbar = () => {
 									<a href='https://www.youtube.com/@sushilcarbazzar5502'>
 										<span className='fa fa-youtube-square'></span>
 									</a>
-									<a href=''>
+									<a href='#'>
 										<span
 											className='fa-sharp fa-solid fa-phone text-white'
 											style={{ marginTop: "20px" }}>
 											+91 92509 22333
 										</span>
 									</a>
-									{/* <IconButton>
-                            <Badge badgeContent={100} color='secondary'>
-                                <MailIcon />
-                            </Badge>
-                        </IconButton> */}
 								</div>
 							</div>
 						</div>

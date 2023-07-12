@@ -510,14 +510,14 @@ const Submit1 = () => {
 
 				<section class='b-pageHeader'>
 					<div class='container'>
-						<h1 class='wow zoomInLeft' data-wow-delay='0.3s'>
+						<h1 class='' data-wow-delay='0.3s'>
 							Submit Your Vehicle
 						</h1>
 					</div>
 				</section>
 
 				<div class='b-breadCumbs s-shadow'>
-					<div class='container wow zoomInUp' data-wow-delay='0.5s'>
+					<div class='container wow ' data-wow-delay='0.5s'>
 						<a href='home.html' class='b-breadCumbs__page'>
 							Home
 						</a>
@@ -538,7 +538,7 @@ const Submit1 = () => {
 						<div class='col-lg-3 col-md-4 col-sm-5 col-xs-6'>
 							<aside class='b-submit__aside'>
 								<div
-									class='b-submit__aside-step m-active wow zoomInUp'
+									class='b-submit__aside-step m-active wow '
 									data-wow-delay='0.5s'>
 									<h3>Step 1</h3>
 									<div class='b-submit__aside-step-inner m-active clearfix'>
@@ -552,9 +552,7 @@ const Submit1 = () => {
 										</div>
 									</div>
 								</div>
-								<div
-									class='b-submit__aside-step wow zoomInUp'
-									data-wow-delay='0.5s'>
+								<div class='b-submit__aside-step wow ' data-wow-delay='0.5s'>
 									<h3>Step 2</h3>
 									<div class='b-submit__aside-step-inner clearfix'>
 										<div class='b-submit__aside-step-inner-icon'>
@@ -572,7 +570,7 @@ const Submit1 = () => {
 						<div class='col-lg-9 col-md-8 col-sm-7 col-xs-6'>
 							<div class='b-submit__main'>
 								<header
-									class='s-headerSubmit s-lineDownLeft wow zoomInUp'
+									class='s-headerSubmit s-lineDownLeft wow '
 									data-wow-delay='0.5s'>
 									<h2 class=''>Add Your Vehicle Details</h2>
 								</header>
@@ -582,7 +580,7 @@ const Submit1 = () => {
 									<div class='row'>
 										<div class='col-md-6 col-xs-12'>
 											{/* <div
-												class='b-submit__main-element wow zoomInUp'
+												class='b-submit__main-element wow '
 												data-wow-delay='0.5s'>
 												<label style={{ color: "black" }}>
 													Source <span>*</span>
@@ -603,7 +601,7 @@ const Submit1 = () => {
 												</div>
 											</div> */}
 											<div
-												class='b-submit__main-element wow zoomInUp'
+												class='b-submit__main-element wow '
 												data-wow-delay='0.5s'>
 												<label style={{ color: "black" }}>
 													Make <span>*</span>
@@ -613,7 +611,7 @@ const Submit1 = () => {
 														class='m-select'
 														value={selectedItem}
 														onChange={handleSelectChange}>
-														<option value=''>Select an item</option>
+														<option value=''>Select item</option>
 														{data.map((item, index) => (
 															<option key={index} value={item.code}>
 																{item.description}
@@ -624,17 +622,17 @@ const Submit1 = () => {
 												</div>
 											</div>
 											<div
-												class='b-submit__main-element wow zoomInUp'
+												class='b-submit__main-element wow '
 												data-wow-delay='0.5s'>
 												<label style={{ color: "black" }}>
-													Varient <span>*</span>
+													Variant <span>*</span>
 												</label>
 												<div class='s-relative'>
 													<select
 														class='m-select'
 														value={selectverient}
 														onChange={handleSelectChange9}>
-														<option value=''>Select an item</option>
+														<option value=''>Select item</option>
 														{varient.map((item, index) => (
 															<option key={index} value={item.code}>
 																{item.description}
@@ -646,7 +644,7 @@ const Submit1 = () => {
 											</div>
 
 											<div
-												class='b-submit__main-element wow zoomInUp'
+												class='b-submit__main-element wow '
 												data-wow-delay='0.5s'>
 												<label style={{ color: "black" }}>
 													Year of MF. <span>*</span>
@@ -656,7 +654,7 @@ const Submit1 = () => {
 														class='m-select'
 														value={selectmfy}
 														onChange={handleSelectChange7}>
-														<option value=''>Select an item</option>
+														<option value=''>Select item</option>
 														{vyear.map((item, index) => (
 															<option key={index} value={item.code}>
 																{item.description}
@@ -668,7 +666,7 @@ const Submit1 = () => {
 											</div>
 
 											<div
-												class='b-submit__main-element wow zoomInUp'
+												class='b-submit__main-element wow '
 												data-wow-delay='0.5s'>
 												<label style={{ color: "black" }}>
 													Fuel <span>*</span>
@@ -678,7 +676,7 @@ const Submit1 = () => {
 														class='m-select'
 														value={selectfuel}
 														onChange={handleSelectChange4}>
-														<option value=''>Select an item</option>
+														<option value=''>Select item</option>
 														{fueldata.map((item, index) => (
 															<option key={index} value={item.code}>
 																{item.description}
@@ -690,7 +688,7 @@ const Submit1 = () => {
 											</div>
 
 											<div
-												class='b-submit__main-element wow zoomInUp'
+												class='b-submit__main-element wow '
 												data-wow-delay='0.5s'>
 												<label style={{ color: "black" }}>
 													Transmission <span>*</span>
@@ -700,7 +698,7 @@ const Submit1 = () => {
 														class='m-select'
 														value={selecttransmission}
 														onChange={handleSelectChange5}>
-														<option value=''>Select an item</option>
+														<option value=''>Select item</option>
 														{transmission.map((item, index) => (
 															<option key={index} value={item.code}>
 																{item.description}
@@ -713,7 +711,7 @@ const Submit1 = () => {
 										</div>
 										<div class='col-md-6 col-xs-12'>
 											<div
-												class='b-submit__main-element wow zoomInUp'
+												class='b-submit__main-element wow '
 												data-wow-delay='0.5s'>
 												<label style={{ color: "black" }}>
 													Model <span>*</span>
@@ -723,7 +721,7 @@ const Submit1 = () => {
 														class='m-select'
 														value={selectmodel}
 														onChange={handleSelectChange3}>
-														<option value=''>Select an item</option>
+														<option value=''>Select item</option>
 														{model.map((item, index) => (
 															<option key={index} value={item.code}>
 																{item.description}
@@ -734,7 +732,7 @@ const Submit1 = () => {
 												</div>
 											</div>
 											<div
-												class='b-submit__main-element wow zoomInUp'
+												class='b-submit__main-element wow '
 												data-wow-delay='0.5s'>
 												<label style={{ color: "black" }}>
 													Exterior Color <span>*</span>
@@ -744,7 +742,7 @@ const Submit1 = () => {
 														class='m-select'
 														value={selectextirecolor}
 														onChange={handleSelectChange6}>
-														<option value=''>Select an item</option>
+														<option value=''>Select item</option>
 														{extirecolor.map((item, index) => (
 															<option key={index} value={item.code}>
 																{item.description}
@@ -755,7 +753,7 @@ const Submit1 = () => {
 												</div>
 											</div>
 											<div
-												class='b-submit__main-element wow zoomInUp'
+												class='b-submit__main-element wow '
 												data-wow-delay='0.5s'>
 												<label style={{ color: "black" }}>
 													Type <span>*</span>
@@ -765,7 +763,7 @@ const Submit1 = () => {
 														class='m-select'
 														value={selecttype}
 														onChange={handleSelectChange2}>
-														<option value=''>Select an item</option>
+														<option value=''>Select item</option>
 														{typedata.map((item, index) => (
 															<option key={index} value={item.code}>
 																{item.description}
@@ -777,7 +775,7 @@ const Submit1 = () => {
 											</div>
 
 											<div
-												class='b-submit__main-element wow zoomInUp'
+												class='b-submit__main-element wow '
 												data-wow-delay='0.5s'>
 												<label style={{ color: "black" }}>
 													Month of MF. <span>*</span>
@@ -788,7 +786,7 @@ const Submit1 = () => {
 														name='source'
 														value={selectmfm}
 														onChange={handleSelectChange8}>
-														<option value=''>Select an item</option>
+														<option value=''>Select item</option>
 														{vmonth.map((item, index) => (
 															<option key={index} value={item.code}>
 																{item.description}
@@ -803,7 +801,7 @@ const Submit1 = () => {
 												style={{ backgroundColor: "#f76d2b" }}
 												// to='/submit2'
 												type='submit'
-												class='btn m-btn pull-right wow zoomInUp btn-danger'
+												class='btn m-btn pull-right wow  btn-danger'
 												data-wow-delay='0.5s'>
 												Save &amp; PROCEED to next step
 												<span
@@ -854,9 +852,7 @@ const Submit1 = () => {
 						</div>
 
 						<div class='col-md-5 col-xs-12'>
-							<address
-								class='b-info__contacts wow zoomInUp'
-								data-wow-delay='0.3s'>
+							<address class='b-info__contacts wow ' data-wow-delay='0.3s'>
 								<p>contact us</p>
 								<div class='b-info__contacts-item'>
 									<span class='fa fa-map-marker'></span>

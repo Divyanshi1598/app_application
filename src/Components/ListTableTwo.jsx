@@ -86,11 +86,11 @@ const ListTableTwo = () => {
 						<h1 className='wow zoomInLeft' data-wow-delay='0.5s'>
 							Auto Listings
 						</h1>
-						<div
+						{/* <div
 							className='b-pageHeader__search wow zoomInRight'
 							data-wow-delay='0.5s'>
 							<h3>Your search returned 28 results</h3>
-						</div>
+						</div> */}
 					</div>
 				</section>
 
@@ -144,7 +144,7 @@ const ListTableTwo = () => {
 										id='cardrow'>
 										<Row
 											xs={12}
-											md={2}
+											md={3}
 											id='cardrow'
 											style={{ margingTop: "20px" }}>
 											{stockdata.map((item) => {
@@ -155,72 +155,86 @@ const ListTableTwo = () => {
 													return (
 														<div className='' key={frontImage.uri} id='cardrow'>
 															<Col>
-																<div className='b-items__cars-one-img'>
+																<div
+																	onClick={() =>
+																		singleProducthandle(item.uniqueSerial)
+																	}
+																	className=' card2 b-auto__main-item '>
+																	{/* {console.log(item.modelImages, "data image url")} */}
 																	<img
 																		style={{
 																			aspectRatio: "2/2",
-																			border: "3px solid gray",
-																			borderRadius: "20px",
+																			width: "100%",
+																			// border: "3px solid gray",
+																			// borderRadius: "20px",
 																		}}
-																		onClick={() =>
-																			singleProducthandle(item.uniqueSerial)
-																		}
-																		id='pic_hit1'
-																		className=''
+																		className=' img-responsive center-block'
 																		src={frontImage.uri}
-																		alt='jeep'
+																		alt='nissan'
 																	/>
-																</div>
-																<div className='b-items__cell-info'>
-																	<div className='s-lineDownLeft b-items__cell-info-title'>
-																		<div className='b-auto__main-item-info'>
-																			<span className='m-price'>
-																				<i className='fa fa-rupee'></i>{" "}
-																				{item.vehSellPriceRecommended}
-																			</span>
+
+																	<div
+																		className=' d-flex b-items__cars-one-info-title'
+																		style={{
+																			fontSize: "16px",
+																			marginLeft: "20px",
+																			marginTop: "10px",
+																		}}>
+																		{" "}
+																		<div>{item.vehManufactureYear} </div>
+																		<div style={{ marginLeft: "5px" }}>
+																			{" "}
+																			{item.vehBrandCode}
+																		</div>{" "}
+																		<div style={{ marginLeft: "5px" }}>
+																			{item.vehModelCode}{" "}
 																		</div>
-																		<h2 className=''>
-																			<a>{item.vehBrandCode}</a> -{" "}
-																			<Link>{item.vehModelCode}</Link>
-																		</h2>
 																	</div>
 
-																	<div>
-																		<div className='d-flex m-smallPadding'>
-																			<div className='col-xs-5'>
-																				<span className='b-items__cars-one-info-title'>
-																					Model Year:
-																				</span>
-																				<span className='b-items__cars-one-info-title'>
-																					Color:
-																				</span>
-																				<span className='b-items__cars-one-info-title'>
-																					Kms:
-																				</span>
-																				<span className='b-items__cars-one-info-title'>
-																					Fuel Type:
-																				</span>
+																	<div
+																		id='textitem'
+																		className='d-flex'
+																		style={{
+																			marginTop: "-4px",
+																		}}>
+																		<ul
+																			className='d-flex'
+																			style={{ fontSize: "" }}>
+																			<div className='b'>
+																				{item.vehOdometer} kms
 																			</div>
-																			<div className='col-xs-7'>
-																				<span className='b-items__cars-one-info-value'>
-																					{item.vehManufactureYear}
-																				</span>
-																				<span className='b-items__cars-one-info-value'>
-																					{item.exteriorColor}
-																				</span>
-																				<span className='b-items__cars-one-info-value'>
-																					{item.vehOdometer} KM
-																				</span>
-																				<span className='b-items__cars-one-info-value'>
-																					{item.vehFuelCode}
-																				</span>
+
+																			<div
+																				className=''
+																				style={{ marginLeft: "15px" }}>
+																				{item.exteriorColor}
 																			</div>
-																		</div>
+																			<div
+																				className=''
+																				style={{ marginLeft: "15px" }}>
+																				{item.vehFuelCode}
+																			</div>
+
+																			<div
+																				className=''
+																				style={{ marginLeft: "15px" }}>
+																				{item.transmissionDesc}
+																			</div>
+																		</ul>
 																	</div>
-																	{/* <h5 className='b-items__cell-info-price'>
-																<span style={{ color: "black" }}>Price:</span>
-																<i className='fa fa-rupee'></i>25,00,000
-															</h5> */}
+
+																	<span
+																		style={{
+																			marginLeft: "19px",
+																		}}
+																		className='d-flex ml-6'>
+																		<i className=''></i>{" "}
+																		<div
+																			className='b-items__cars-one-info-title'
+																			style={{ fontSize: "18px" }}>
+																			Rs {item.vehSellPriceRecommended}
+																		</div>
+																	</span>
 																</div>
 															</Col>
 														</div>

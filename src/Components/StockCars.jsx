@@ -873,7 +873,7 @@ const StockCars = () => {
 											class=''
 											value={selectverient}
 											onChange={handleSelectChange9}>
-											<option value=''> Varient </option>
+											<option value=''> Variant </option>
 											{varient.map((item, index) => (
 												<option key={index} value={item.code}>
 													{item.description}
@@ -893,7 +893,7 @@ const StockCars = () => {
 											class=''
 											value={selectverient}
 											onChange={handleSelectChange9}>
-											<option value=''> Buget </option>
+											<option value=''> Budget </option>
 											{Amountdata.map((item, id) => (
 												<option key={id} value={item.id}>
 													{item.img}
@@ -944,86 +944,6 @@ const StockCars = () => {
 									</div>
 								</div>
 
-								{/* <div
-									data-wow-delay='0.5s'
-									className='col-xs-12 col-md-12 col-lg-12 col-xl-12'>
-									<div class='s-relative'>
-										<select
-											id='selectdata'
-											class=''
-											value={selecttransmission}
-											onChange={handleSelectChange5}>
-											<option value=''>What Transmission?</option>
-											{transmission.map((item, index) => (
-												<option key={index} value={item.code}>
-													{item.description}
-												</option>
-											))}
-										</select>
-										<span class='fa fa-caret-down'></span>
-									</div>
-								</div>
-
-								<div
-									data-wow-delay='0.5s'
-									className='col-xs-12 col-md-12 col-lg-12 col-xl-12'>
-									<div class='s-relative'>
-										<select
-											id='selectdata'
-											class=''
-											value={selectextirecolor}
-											onChange={handleSelectChange6}>
-											<option value=''>What Exterior Color ?</option>
-											{extirecolor.map((item, index) => (
-												<option key={index} value={item.code}>
-													{item.description}
-												</option>
-											))}
-										</select>
-										<span class='fa fa-caret-down'></span>
-									</div>
-								</div>
-								{/* note write a selelct function on three dropdown menu like body type, kms, price  */}
-
-								{/* <div
-									class='col-xs-12 col-md-12 col-lg-12 col-xl-12'
-									data-wow-delay='0.5s'>
-									<div class=''>
-										<select
-											id='selectdata'
-											class=''
-											value={kmsDriven}
-											onChange={handleSelectKmsType}>
-											<option value=''>How Much Driven? </option>
-											{kmsmeter.map((item, id) => (
-												<option key={id} value={item.id}>
-													{item.img}
-												</option>
-											))}
-										</select>
-										<span class='fa fa-caret-down'></span>
-									</div>
-								</div>
-
-								<div
-									class='col-xs-12 col-md-12 col-lg-12 col-xl-12'
-									data-wow-delay='0.5s'>
-									<div class=''>
-										<select
-											id='selectdata'
-											class=''
-											value={selectbodytype}
-											onChange={handleSelectBodyType}>
-											<option value=''>What Body-type? </option>
-											{bodyType.map((item, id) => (
-												<option key={id} value={item.id}>
-													{item.img}
-												</option>
-											))}
-										</select>
-										<span class='fa fa-caret-down'></span>
-									</div>
-								</div>  */}
 								<br />
 								<br />
 								<br />
@@ -1049,77 +969,85 @@ const StockCars = () => {
 														<div key={frontImage.uri}>
 															<Col>
 																<div
-																	className='wow zoomInUp'
-																	data-wow-delay='0.5s'>
-																	<div className='b-items__cell'>
-																		<div className='b-items__cars-one-img'>
-																			<Link>
-																				<img
-																					style={{
-																						aspectRatio: "2/2",
-																						border: "2px solid gray",
-																						borderRadius: "20px",
-																					}}
-																					onClick={() =>
-																						singleProducthandle(
-																							item.uniqueSerial
-																						)
-																					}
-																					id='pic_hit1'
-																					className=''
-																					src={frontImage.uri}
-																					alt='jeep'
-																				/>
-																			</Link>
-																		</div>
+																	onClick={() =>
+																		singleProducthandle(item.uniqueSerial)
+																	}
+																	className=' card2 b-auto__main-item '>
+																	{/* {console.log(item.modelImages, "data image url")} */}
+																	<img
+																		style={{
+																			aspectRatio: "2/2",
+																			width: "100%",
+																			// border: "3px solid gray",
+																			// borderRadius: "20px",
+																		}}
+																		className=' img-responsive center-block'
+																		src={frontImage.uri}
+																		alt='nissan'
+																	/>
 
-																		<div className='b-items__cell-info info_hit'>
-																			<div className='s-lineDownLeft b-items__cell-info-title'>
-																				<div className='b-auto__main-item-info'>
-																					<span className='m-price'>
-																						<i className='fa fa-rupee'></i>{" "}
-																						{item.vehSellPriceRecommended}
-																					</span>
-																				</div>
-																				<h2>
-																					<a>{item.vehBrandCode}</a> -{" "}
-																					<Link>{item.vehModelCode}</Link>
-																				</h2>
-																			</div>
-																			<div>
-																				<div className='d-flex m-smallPadding'>
-																					<div>
-																						<span className='b-items__cars-one-info-title'>
-																							Year:
-																						</span>
-																						<span className='b-items__cars-one-info-title'>
-																							Color:
-																						</span>
-																						<span className='b-items__cars-one-info-title'>
-																							Kms :
-																						</span>
-																						<span className='b-items__cars-one-info-title'>
-																							Fuel Type:
-																						</span>
-																					</div>
-																					<div className='col-xs-7'>
-																						<span className='b-items__cars-one-info-value'>
-																							{item.vehManufactureYear}
-																						</span>
-																						<span className='b-items__cars-one-info-value'>
-																							{item.exteriorColor}
-																						</span>
-																						<span className='b-items__cars-one-info-value'>
-																							{item.vehOdometer}KM
-																						</span>
-																						<span className='b-items__cars-one-info-value'>
-																							{item.vehFuelCode}
-																						</span>
-																					</div>
-																				</div>
-																			</div>
+																	<div
+																		className=' d-flex b-items__cars-one-info-title'
+																		style={{
+																			fontSize: "16px",
+																			marginLeft: "20px",
+																			marginTop: "10px",
+																		}}>
+																		{" "}
+																		<div>{item.vehManufactureYear} </div>
+																		<div style={{ marginLeft: "5px" }}>
+																			{" "}
+																			{item.vehBrandCode}
+																		</div>{" "}
+																		<div style={{ marginLeft: "5px" }}>
+																			{item.vehModelCode}{" "}
 																		</div>
 																	</div>
+
+																	<div
+																		id='textitem'
+																		className='d-flex'
+																		style={{
+																			marginTop: "-4px",
+																		}}>
+																		<ul
+																			className='d-flex'
+																			style={{ fontSize: "" }}>
+																			<div className='b'>
+																				{item.vehOdometer} kms
+																			</div>
+
+																			<div
+																				className=''
+																				style={{ marginLeft: "15px" }}>
+																				{item.exteriorColor}
+																			</div>
+																			<div
+																				className=''
+																				style={{ marginLeft: "15px" }}>
+																				{item.vehFuelCode}
+																			</div>
+
+																			<div
+																				className=''
+																				style={{ marginLeft: "15px" }}>
+																				{item.transmissionDesc}
+																			</div>
+																		</ul>
+																	</div>
+
+																	<span
+																		style={{
+																			marginLeft: "19px",
+																		}}
+																		className='d-flex ml-6'>
+																		<i className=''></i>{" "}
+																		<div
+																			className='b-items__cars-one-info-title'
+																			style={{ fontSize: "18px" }}>
+																			Rs {item.vehSellPriceRecommended}
+																		</div>
+																	</span>
 																</div>
 															</Col>
 														</div>
@@ -1153,74 +1081,83 @@ const StockCars = () => {
 														onClick={() =>
 															singleProducthandle(item.uniqueSerial)
 														}
-														className='wow zoomInUp'
-														data-wow-delay='0.5s'>
-														<div className='b-items__cell'>
-															<div className='b-items__cars-one-img'>
-																<Link>
-																	<img
-																		style={{
-																			aspectRatio: "2/2",
-																			border: "2px solid gray",
-																			borderRadius: "20px",
-																		}}
-																		id='pic_hit1'
-																		className=''
-																		src={
-																			item?.modelImages.length > 0 &&
-																			item?.modelImages[0].uri
-																		}
-																		alt='jeep'
-																	/>
-																</Link>
+														className='card2 b-auto__main-item '>
+														<div className=''>
+															<div className=''>
+																<img
+																	style={{
+																		aspectRatio: "2/2",
+																		width: "100%",
+																	}}
+																	// id='pic_hit1'
+																	className=''
+																	src={
+																		item?.modelImages.length > 0 &&
+																		item?.modelImages[0].uri
+																	}
+																	alt='jeep'
+																/>
 															</div>
 
-															<div className='b-items__cell-info'>
-																<div className='s-lineDownLeft b-items__cell-info-title'>
-																	<div className='b-auto__main-item-info'>
-																		<span className='m-price'>
-																			<i className='fa fa-rupee'></i>{" "}
-																			{item.vehSellPriceRecommended}
-																		</span>
-																	</div>
-																	<h2>
-																		<a>{item.vehBrandCode}</a> -{" "}
-																		<Link>{item.vehModelCode}</Link>
-																	</h2>
-																</div>
-																<div>
-																	<div className='d-flex m-smallPadding'>
-																		<div>
-																			<span className='b-items__cars-one-info-title'>
-																				Model Year:
-																			</span>
-																			<span className='b-items__cars-one-info-title'>
-																				Color:
-																			</span>
-																			<span className='b-items__cars-one-info-title'>
-																				Kms Done:
-																			</span>
-																			<span className='b-items__cars-one-info-title'>
-																				Fuel Type:
-																			</span>
-																		</div>
-																		<div className='col-xs-7'>
-																			<span className='b-items__cars-one-info-value'>
-																				{item.vehManufactureYear}
-																			</span>
-																			<span className='b-items__cars-one-info-value'>
-																				{item.exteriorColor}
-																			</span>
-																			<span className='b-items__cars-one-info-value'>
-																				{item.vehOdometer}KM
-																			</span>
-																			<span className='b-items__cars-one-info-value'>
-																				{item.vehFuelCode}
-																			</span>
-																		</div>
-																	</div>
+															<div
+																className=' d-flex b-items__cars-one-info-title'
+																style={{
+																	fontSize: "16px",
+																	marginLeft: "20px",
+																}}>
+																{" "}
+																<div>{item.vehManufactureYear} </div>
+																<div style={{ marginLeft: "5px" }}>
+																	{" "}
+																	{item.vehBrandCode}
+																</div>{" "}
+																<div style={{ marginLeft: "5px" }}>
+																	{item.vehModelCode}{" "}
 																</div>
 															</div>
+
+															<div
+																id='textitem'
+																className='d-flex'
+																style={{
+																	marginTop: "-4px",
+																}}>
+																<ul className='d-flex' style={{ fontSize: "" }}>
+																	<div className='b'>
+																		{item.vehOdometer} kms
+																	</div>
+
+																	<div
+																		className=''
+																		style={{ marginLeft: "15px" }}>
+																		{item.exteriorColor}
+																	</div>
+																	<div
+																		className=''
+																		style={{ marginLeft: "15px" }}>
+																		{item.vehFuelCode}
+																	</div>
+
+																	<div
+																		className=''
+																		style={{ marginLeft: "15px" }}>
+																		{item.transmissionDesc}
+																	</div>
+																</ul>
+															</div>
+
+															<span
+																style={{
+																	marginLeft: "19px",
+																}}
+																className='d-flex ml-6'>
+																<i className=''></i>{" "}
+																<div
+																	className='b-items__cars-one-info-title'
+																	style={{ fontSize: "18px" }}>
+																	Rs {item.vehSellPriceRecommended}
+																</div>
+															</span>
 														</div>
 													</div>
 												</Col>

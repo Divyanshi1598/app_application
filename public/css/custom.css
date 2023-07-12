@@ -4,10 +4,6 @@
 
 /*//////////////////////////////////////////////////////////////////////////////////////////*/
 
-body {
-	font-family: "Outfit", sans-serif;
-}
-
 .b-topBar {
 	background-color: #000 !important;
 }
@@ -48,8 +44,9 @@ body {
 }
 
 body {
-	margin-top: 72px;
-	background-color: #ddd;
+	/* margin-top: 72px; */
+	/* background-color: #ddd; */
+	font-family: "Outfit", sans-serif;
 }
 
 .b-world__item img {
@@ -89,7 +86,7 @@ body {
 }
 
 .b-auto__main-item img {
-	width: 100%;
+	width: 100% !important;
 	transition: 0.2s all ease-in-out;
 	margin-bottom: 4px;
 	border-radius: 12px !important;
@@ -97,6 +94,22 @@ body {
 	max-height: 300px;
 	height: 300px !important;
 	object-fit: cover;
+}
+
+.b-auto__main-item1 img {
+	width: 100% !important;
+	transition: 0.2s all ease-in-out;
+	margin-bottom: 4px;
+	border-radius: 12px !important;
+	border: 2px solid #999;
+	max-height: 300px;
+	height: 300px !important;
+	object-fit: cover;
+}
+
+.b-auto__main-item1 img:hover {
+	/* transform: scale(1.1); */
+	filter: brightness(50%);
 }
 
 .b-auto__main-item img:hover {

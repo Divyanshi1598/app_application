@@ -32,6 +32,7 @@ function Details({ selectedProduct }) {
 	const [message, setMessage] = useState("");
 	const [error, setError] = useState("");
 	const [changeimage, setchangeimage] = useState();
+	const [zoom, setZoom] = useState(null);
 
 	const generateNumbers = () => {
 		setNum1(Math.floor(Math.random() * 10));
@@ -71,54 +72,6 @@ function Details({ selectedProduct }) {
 		// setIsModalOpen(false);
 	};
 
-	const data = [
-		{
-			id: 1,
-			img: "images/car-images/car_derail/merc-1.jpg",
-		},
-		{
-			id: 2,
-			img: "images/car-images/car_derail/merc-2.jpg",
-		},
-		{
-			id: 3,
-			img: "images/car-images/car_derail/merc-3.jpg",
-		},
-		{
-			id: 4,
-			img: "images/car-images/car_derail/merc-4.jpg",
-		},
-
-		{
-			id: 5,
-			img: "images/car-images/car_derail/merc-5.jpg",
-		},
-
-		{
-			id: 6,
-			img: "images/car-images/car_derail/merc-0.jpg",
-		},
-
-		{
-			id: 7,
-			img: "images/car-images/car_derail/merc-5.jpg",
-		},
-
-		{
-			id: 8,
-			img: "images/car-images/car_derail/merc-2.jpg",
-		},
-
-		{
-			id: 9,
-			img: "images/car-images/car_derail/merc-0.jpg",
-		},
-
-		{
-			id: 10,
-			img: "images/car-images/car_derail/merc-5.jpg",
-		},
-	];
 	const navigate = useNavigate();
 
 	const HandleDataSave = (e) => {
@@ -298,42 +251,27 @@ function Details({ selectedProduct }) {
 
 				<div className='carousel-wrapper'>
 					<Carousel breakPoints={breakPoints}>
-						{selectedProduct?.modelImages.map((e, id) => (
-							<div key={id}>
+						{selectedProduct?.modelImages.map((item) => (
+							<div key={item.uniqueSerial}>
 								<a
 									id='slider_img'
 									class='img-responsive center-block b-auto__main-item wow zoomInUp'
 									href='#'
-									data-image-id={id}
 									data-toggle='modal'
-									data-title={e.uri}
-									// src={e.uri}
+									data-title={item.uri}
 									data-target='#image-gallery'>
-									{console.log(e.uri, "image dataS")}
 									<img
 										class='img-thumbnail'
-										src={e.uri}
-										onClick={(e) => handleImageClick(e.uri)}
+										src={item.uri}
+										onClick={(e) => setZoom(item.uri)}
 										alt='Another alt text'
 										style={{ aspectRatio: "3/2" }}
 										className=' card img-responsive center-block'
-										// src={e.uri}
 									/>
 								</a>
-								{/* <img
-									style={{ aspectRatio: "3/2" }}
-									className=' card img-responsive center-block'
-									src={e.uri}
-									alt='nissan'
-									onClick={() => handleImageClick(e)}
-								/> */}
 
 								<div class=''>
 									<div class='row'>
-										{/* <div class='row'>
-									
-								</div> */}
-
 										<div
 											class='modal fade'
 											id='image-gallery'
@@ -362,14 +300,16 @@ function Details({ selectedProduct }) {
 															class='carousel slide carousel-fade'
 															data-bs-ride='carousel'>
 															<div class='carousel-inner'>
-																{selectedProduct?.modelImages.map((e, id) => (
-																	<div class='carousel-item active' key={id}>
-																		<img src={e.uri} alt='...' />
+																{selectedProduct?.modelImages.map((item) => (
+																	<div
+																		class='carousel-item active'
+																		key={item.uniqueSerial}>
+																		<img src={zoom} alt='...' />
 																	</div>
 																))}
 															</div>
 
-															{/* <button
+															<button
 																class='carousel-control-prev'
 																type='button'
 																data-bs-target='#carouselExampleFade'
@@ -392,7 +332,7 @@ function Details({ selectedProduct }) {
 																	class='carousel-control-next-icon visually-hidden'
 																	aria-hidden='true'></span>
 																<span class='visually-hidden'>Next</span>
-															</button> */}
+															</button>
 														</div>
 													</section>
 
@@ -445,12 +385,6 @@ function Details({ selectedProduct }) {
 													<div className='col-xs-10'>
 														<div className=''>
 															<h1>{selectedProduct.vehBrandCode}</h1>
-															{/* <img
-																style={{ width: "40%" }}
-																// id='pic_hit1'
-																className='border-rounded'
-																src={selectedProduct.modelImagePath}
-															/> */}
 														</div>
 
 														<aside className='b-detail__main-aside'>
@@ -518,7 +452,7 @@ function Details({ selectedProduct }) {
 																<div className='row'>
 																	<div className='col-6'>
 																		<h4 className='b-detail__main-aside-desc-title'>
-																			Varient Description
+																			Variant Description
 																		</h4>
 																	</div>
 																	<div className='col-6'>
@@ -760,10 +694,6 @@ function Details({ selectedProduct }) {
 																	onChange={(event) =>
 																		setUserAnswer(event.target.value)
 																	}></input>
-																{/* <i
-																	onClick={handleSubmit}
-																	class='fa fa-check-square-o fa-2x fa-success'
-																	aria-hidden='true'></i> */}
 															</div>
 														</form>
 
@@ -824,8 +754,6 @@ function Details({ selectedProduct }) {
 																								marginLeft: "150px",
 																							}}>
 																							Are you sure to raise enquiry?
-																							{/* Your request has been received. We will
-																				contact you shortly! */}
 																						</h4>
 																						<p></p>
 																						<div
