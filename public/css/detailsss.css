@@ -448,6 +448,7 @@
 .b-brands__brand {
 	margin: 0 30px;
 	display: inline-block;
+	width: 100px !important;
 }
 
 /* B Detail New*/

@@ -6,6 +6,7 @@ import styled from "./Item";
 import ScrollTop from "./ScrollTop";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
+import PageScrollTop from "./PageScrollTop";
 
 const Submit2 = () => {
 	const [statelist, setStateList] = useState([]);
@@ -230,10 +231,20 @@ const Submit2 = () => {
 		console.log(Datasecond, "secontdata");
 	};
 
+	const handleInputChange = (event) => {
+		const newValue = event.target.value;
+		const numericValue = newValue.replace(/[^0-9]/g, ""); // Remove non-numeric characters
+
+		if (numericValue.length <= 10) {
+			setmobile(numericValue);
+			// setMobileError("");
+		}
+	};
+
 	return (
 		<div>
 			{/* header section */}
-			<ScrollTop />
+			<PageScrollTop />
 
 			<div className='m-submit1' data-scrolling-animations='true'>
 				<section className='b-pageHeader'>
@@ -283,7 +294,7 @@ const Submit2 = () => {
 											</div>
 											<div className='b-submit__aside-step-inner-info'>
 												<h4>Contact Details</h4>
-												<p>Choose vehicle specifications</p>
+												<p>Update your contact details</p>
 												<div className='b-submit__aside-step-inner-info-triangle'></div>
 											</div>
 										</div>
@@ -336,8 +347,9 @@ const Submit2 = () => {
 														<input
 															type='text'
 															name='mobile'
+															value={mobile}
 															placeholder='Please Enter Mobile No.'
-															onChange={(e) => setmobile(e.target.value)}
+															onChange={handleInputChange}
 														/>
 														{mobileError && (
 															<span style={{ color: "red" }}>
@@ -415,7 +427,7 @@ const Submit2 = () => {
 																	style={{
 																		fontSize: "25px",
 																		marginLeft: "20px",
-																		marginTop: "20px",
+
 																		color: "red",
 																		fontWeight: "800px ",
 																	}}>
@@ -425,18 +437,16 @@ const Submit2 = () => {
 																<i
 																	style={{
 																		marginLeft: "20px",
-																		marginTop: "30px",
+																		marginTop: "10px",
 																	}}
 																	onClick={resetCaptcha}
 																	class='fa fa-refresh fa-1x'
 																	aria-hidden='true'></i>
-															</span>
 
-															<label
-																style={{
-																	color: "black",
-																	mrginTop: "-70px",
-																}}></label>
+																<span style={{ color: "red" }}>*</span>
+															</span>
+															<br />
+
 															<div className='d-flex'>
 																<input
 																	className='s-relative'
@@ -446,8 +456,6 @@ const Submit2 = () => {
 																	onChange={(event) =>
 																		setUserAnswer(event.target.value)
 																	}></input>
-
-																<span style={{ color: "red" }}>*</span>
 															</div>
 														</form>
 

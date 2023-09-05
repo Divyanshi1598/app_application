@@ -609,12 +609,38 @@ body {
 }
 
 .notdatafound {
+	margin-top: 193px !important;
+	max-height: 52px !important;
+	height: 144% !important;
+	width: 32% !important;
+	/* font-weight: 800 !important; */
+	color: white;
+	background-color: dimgrey;
 	text-align: center;
 	margin: 0 auto;
+	font: 600 12px "Open Sans", sans-serif;
 }
 
-.notdatafound p {
-	font-size: 22px;
+.notdatafound23 {
+	margin-top: 30px !important;
+	max-height: 52px !important;
+	height: 144% !important;
+	width: 32% !important;
+	/* font-weight: 800 !important; */
+	color: white;
+	background-color: dimgrey;
+	text-align: center;
+	margin: 0 auto;
+	font: 600 12px "Open Sans", sans-serif;
+}
+
+.notdatafound23 h2 {
+	margin-top: 7px !important;
+}
+
+.notdatafound h2 {
+	/* font-size: 22px; */
+	margin-top: 7px !important;
 }
 
 .pls1 {

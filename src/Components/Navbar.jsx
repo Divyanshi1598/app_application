@@ -4,13 +4,37 @@ import "./navbar.css";
 import toast from "react-hot-toast";
 import Homepage from "./HomePage";
 import Details from "./Details";
+import ReactLoading from "react-loading";
+import ErrorPage from "./ErrorPage";
+
 const Navbar = ({ onHomeClick }) => {
 	const navRef = useRef();
 	const [page, setPage] = useState(false);
+	const [refreshContact, setRefreshContact] = useState(false);
+	const [refreshKey, setRefreshKey] = useState(0);
+	const [shouldRefreshContact, setShouldRefreshContact] = useState(false); // Fl
+	const refreshContactComponent = () => {
+		if (!shouldRefreshContact) {
+			setShouldRefreshContact(true);
+			setRefreshKey(refreshKey + 6);
+		}
+	};
+
+	// const handleRefresh = () => {
+	// 	// Increment the key value to trigger a re-render
+	// 	console.log("referesh data");
+	// 	setRefreshKey(refreshKey + 1);
+	// };
 
 	const showNavbar = () => {
 		navRef.current.classList.toggle("responsive_nav");
 	};
+	const reloadPage = () => {
+		window.location.reload(); // Set loading state to false after the timeout
+
+		// toast.success("Page  Loading ! ");
+	};
+	useEffect(() => {});
 
 	return (
 		<header className=' fixed-top'>
@@ -24,10 +48,16 @@ const Navbar = ({ onHomeClick }) => {
 					onClick={() => {
 						showNavbar();
 						onHomeClick();
+						// refreshContactComponent();
 					}}>
 					<span>HOME</span>
 				</Link>
-				<Link to='/salecar' onClick={showNavbar}>
+				<Link
+					to='/salecar'
+					oonClick={() => {
+						showNavbar();
+						// refreshContactComponent();
+					}}>
 					SELL CAR
 				</Link>
 				<Link
@@ -35,13 +65,24 @@ const Navbar = ({ onHomeClick }) => {
 					onClick={() => {
 						showNavbar();
 						onHomeClick();
+						// refreshContactComponent();
 					}}>
 					<span>BUY CAR</span>
 				</Link>
-				<Link to='/about' onClick={showNavbar}>
+				<Link
+					to='/about'
+					onClick={() => {
+						showNavbar();
+						// refreshContactComponent();
+					}}>
 					ABOUT US
 				</Link>
-				<Link to='/contact' onClick={showNavbar}>
+				<Link
+					to='/contact'
+					onClick={() => {
+						showNavbar();
+						// refreshContactComponent();
+					}}>
 					CONTACT US
 				</Link>
 

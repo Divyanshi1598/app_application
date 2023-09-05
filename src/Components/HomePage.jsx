@@ -451,7 +451,25 @@ export default function HomePage({ detailspage, setDetailspage }) {
 							{/* Loader end */}
 
 							{/* slider  */}
-							<section className='b-slider hidden-xs'>
+							<section className='b-slider1 hidden-xs'>
+								<div
+									id='carouselExampleFade'
+									className='carousel slide carousel-fade'
+									data-bs-ride='carousel'>
+									<div className='carousel-inner'>
+										<div className='carousel-item active'>
+											<img
+												style={{ marginTop: "0px" }}
+												src='media/main-slider/sushil-cars2.png'
+												className='d-block w-100'
+												alt='...'
+											/>
+										</div>
+									</div>
+								</div>
+							</section>
+
+							<section className='b-slider1 visible-xs'>
 								<div
 									id='carouselExampleFade'
 									className='carousel slide carousel-fade'
@@ -469,25 +487,6 @@ export default function HomePage({ detailspage, setDetailspage }) {
 								</div>
 							</section>
 
-							<section className='b-slider visible-xs'>
-								<div
-									id='carouselExampleFade'
-									className='carousel slide carousel-fade'
-									data-bs-ride='carousel'>
-									<div className='carousel-inner'>
-										<div className='carousel-item active'>
-											<img
-												id='imglogop'
-												style={{ marginTop: "100px" }}
-												src='media/main-slider/sushil-cars.jpg'
-												className='d-block w-100'
-												alt='...'
-											/>
-										</div>
-									</div>
-								</div>
-							</section>
-
 							{/* filter form search bar */}
 							<section className='b-search' id='ser_hit1'>
 								<div className='container'>
@@ -495,7 +494,7 @@ export default function HomePage({ detailspage, setDetailspage }) {
 										<div
 											className='b-search__main'
 											style={{
-												marginTop: "-6px",
+												marginTop: "-70px",
 												borderRadius: "30px",
 												backgroundColor: "white",
 											}}>
@@ -652,7 +651,9 @@ export default function HomePage({ detailspage, setDetailspage }) {
 								<>
 									{/* vechile Stock home data on sale section */}
 
-									<section className='b-homeAuto  hidden-xs  '>
+									<section
+										className='b-homeAuto  hidden-xs  '
+										style={{ marginTop: "-69px" }}>
 										<div className='container'>
 											<div className='col-xs-12   visible-xs-horizental-scroll'>
 												<div className='b-homeAuto__latest'>
@@ -1076,12 +1077,8 @@ export default function HomePage({ detailspage, setDetailspage }) {
 													<div className=' bag_clr1' id='cardrow'>
 														<Row xs={12} md={4} id='cardrow'>
 															{demo.length === 0 ? (
-																<div className='notdatafound'>
-																	<p>vehicle Not Available</p>
-																	<img
-																		src='https://img.freepik.com/free-vector/no-data-concept-illustration_114360-616.jpg?size=626&ext=jpg'
-																		alt='imph'
-																	/>
+																<div className='notdatafound23'>
+																	<h2>Vehicle Not Available</h2>
 																</div>
 															) : (
 																<>
@@ -1186,12 +1183,8 @@ export default function HomePage({ detailspage, setDetailspage }) {
 
 													<div className='row' id='cardrow'>
 														{demo.length === 0 ? (
-															<div className='notdatafound'>
-																<p>vehicle Not Available</p>
-																<img
-																	src='https://img.freepik.com/free-vector/no-data-concept-illustration_114360-616.jpg?size=626&ext=jpg'
-																	alt='imph'
-																/>
+															<div className='notdatafound23'>
+																<h2>vehicle Not Available</h2>
 															</div>
 														) : (
 															<>
@@ -1341,7 +1334,7 @@ export default function HomePage({ detailspage, setDetailspage }) {
 													<div class='service-icon'></div>
 												</a>
 												<h3 class='title'>Auto Loans</h3>
-												<p class='description'>Low Rates and Fast Approvals</p>
+												<p class='description'>Low rates and fast approvals</p>
 											</div>
 										</div>
 
@@ -1352,7 +1345,7 @@ export default function HomePage({ detailspage, setDetailspage }) {
 												</a>
 												<h3 class='title'>Insurance</h3>
 												<p class='description'>
-													A Day Without Insurance is Like a Day Without Sunshine
+													A day without insurance is like a day without sunshine
 												</p>
 											</div>
 										</div>
@@ -1373,8 +1366,8 @@ export default function HomePage({ detailspage, setDetailspage }) {
 													{" "}
 													<div class='service-icon'></div>
 												</a>
-												<h3 class='title'>Emi calculator</h3>
-												<p class='description'>Low Rates and Fast Approvals</p>
+												<h3 class='title'>EMI calculator</h3>
+												<p class='description'>Low rates and fast approvals</p>
 											</div>
 										</div>
 									</div>
@@ -1402,18 +1395,33 @@ export default function HomePage({ detailspage, setDetailspage }) {
 																	singleProducthandle(item.uniqueSerial)
 																}
 																className=' card3 b-auto__main-item1 '>
-																<img
-																	style={{
-																		aspectRatio: "/2",
-																		width: "100%",
-																	}}
-																	// className='hidden-xs '
-																	src={
-																		item?.modelImages.length > 0 &&
-																		item?.modelImages[0].uri
-																	}
-																	alt='nissan'
-																/>
+																{item?.modelImages.length === 0 ? (
+																	<>
+																		{" "}
+																		<img
+																			src='images/logo/bmw.jpg'
+																			style={{
+																				aspectRatio: "/2",
+																				width: "100%",
+																			}}
+																		/>
+																	</>
+																) : (
+																	<>
+																		<img
+																			style={{
+																				aspectRatio: "/2",
+																				width: "100%",
+																			}}
+																			// className='hidden-xs '
+																			src={
+																				item?.modelImages.length > 0 &&
+																				item?.modelImages[0].uri
+																			}
+																			alt='nissan'
+																		/>
+																	</>
+																)}
 																<div
 																	className=' d-flex b-items__cars-one-info-title  hidden-xs '
 																	style={{
@@ -1689,8 +1697,8 @@ WELCOME TO SUSHIL CARS  section */}
 																animationDelay: "0s",
 															}}>
 															<p className=''>
-																Switch to the fast lane. Go mobile Switch to the
-																fast lane. Go mobile
+																Switch to the fast lane. <br />
+																Go mobile switch to the fast lane.
 															</p>
 
 															<p className=''></p>
@@ -1866,27 +1874,86 @@ WELCOME TO SUSHIL CARS  section */}
 									<h2 className='s-title wow zoomInUp brd_padg'>
 										BRANDS WE OFFER
 									</h2>
+									{/* <div className=''>
+										<div className=''>
+											<img
+												className='imagmotors'
+												style={{ height: "112px" }}
+												src='https://pngimg.com/uploads/bmw_logo/bmw_logo_PNG19699.png'
+												alt='brand'
+											/>
+										</div>
+										<div className=''>
+											<img
+												className='imagmotors'
+												style={{ height: "112px" }}
+												src='https://files.cults3d.com/uploaders/16882111/illustration-file/6ea077f8-9401-4080-bbcd-ac60b34125e2/Screenshot_3.png'
+												alt='brand'
+											/>
+										</div>
+										<div className=''>
+											<img
+												className='imagmotors'
+												style={{ height: "112px" }}
+												src='https://d2t1xqejof9utc.cloudfront.net/screenshots/pics/cff849db2db7ecfbeb83af7bb7f9c81e/large.jpg'
+												alt='brand'
+											/>
+										</div>
+										<div className=''>
+											<img
+												className='imagmotors'
+												style={{ height: "112px" }}
+												src='https://storage.googleapis.com/production-thangs-public/uploads/attachments/b92c8de8-2433-4d01-b0c9-2a5cb662b564/untitled.113.png'
+												alt='brand'
+											/>
+										</div>
+										<div className=''>
+											<img
+												className='imagmotors'
+												style={{ height: "112px" }}
+												src='https://lofrev.net/wp-content/photos/2014/08/Audi-logo-e1407305728193.jpg'
+												alt='brand'
+											/>
+										</div>
+										<div className=''>
+											<img
+												className='imagmotors'
+												style={{ height: "112px" }}
+												src='https://d2t1xqejof9utc.cloudfront.net/screenshots/pics/08fe2c6cac15c3846685f989d5d15e30/large.jpg'
+												alt='brand'
+											/>
+										</div>
+										<div className=''>
+											<img
+												className='imagmotors'
+												style={{ height: "112px" }}
+												src='https://logos-world.net/wp-content/uploads/2021/09/MG-Motor-Logo-2021-present.png'
+												alt='brand'
+											/>
+										</div>
+									</div> */}
+
 									<div className=''>
 										<div className='b-brands__brand wow rotateIn'>
-											<img src='media/brands/bmwLogo.png' alt='brand' />
+											<img src='images/logo/bmw.jpg' alt='brand' />
 										</div>
 										<div className='b-brands__brand wow rotateIn'>
-											<img src='media/brands/kia.png' alt='brand' />
+											<img src='images/logo/Kia.png' alt='brand' />
 										</div>
 										<div className='b-brands__brand wow rotateIn'>
-											<img src='media/brands/volvo.png' alt='brand' />
+											<img src='images/logo/volvo.png' alt='brand' />
 										</div>
 										<div className='b-brands__brand wow rotateIn'>
-											<img src='media/brands/mercLogo.png' alt='brand' />
+											<img src='images/logo/merc.jpg' alt='brand' />
 										</div>
 										<div className='b-brands__brand wow rotateIn'>
-											<img src='media/brands/audiLogo.png' alt='brand' />
+											<img src='images/logo/audi.jpg' alt='brand' />
 										</div>
 										<div className='b-brands__brand wow rotateIn'>
-											<img src='media/brands/honda.png' alt='brand' />
+											<img src='images/logo/hunda.jpg' alt='brand' />
 										</div>
 										<div className='b-brands__brand wow rotateIn'>
-											<img src='media/brands/mg.png' alt='brand' />
+											<img src='images/logo/mg.jpg' alt='brand' />
 										</div>
 									</div>
 								</div>

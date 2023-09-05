@@ -7460,6 +7460,10 @@ button.close {
 	.modal-content {
 		-webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 		box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+		/* margin-top: 103px !important;
+		width: 1151px !important;
+		max-height: 300% !important;
+		object-fit: cover; */
 	}
 	.modal-sm {
 		width: 300px;

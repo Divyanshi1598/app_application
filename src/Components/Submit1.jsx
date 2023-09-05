@@ -601,7 +601,7 @@ const Submit1 = () => {
 											</div>
 											<div class='b-submit__aside-step-inner-info'>
 												<h4>Contact details</h4>
-												<p>Update Your Contact Details</p>
+												<p>Update your contact details</p>
 											</div>
 										</div>
 									</div>

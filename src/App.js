@@ -82,8 +82,8 @@ export default function App({ isLoggedIn }) {
 				<Navbar onHomeClick={handleHomeClick} />{" "}
 			</div>{" "}
 			<Routes>
-				<Route exact path='/ghhj' element={<Signup />} exact />{" "}
-				{/* <Route exact path='/admin' element={<AdminDash />} exact /> */}{" "}
+				<Route exact path='/uii' element={<Signup />} exact />{" "}
+				<Route exact path='/admin' element={<AdminDash />} exact />{" "}
 				<Route
 					exact
 					path='/dashboard'
@@ -121,7 +121,7 @@ export default function App({ isLoggedIn }) {
 				<Route path='/submit2' element={<Submit2 />} />{" "}
 				<Route path='/carloans' element={<CarLoan />} />{" "}
 				{/* <Route path='/Addvechils' element={<AddVechil />} />{" "}
-                                                                                                                                                                                                                                                                                                                                                                                                            				<Route path='/stocktable' element={<StoreVechileTable />} />{" "} */}{" "}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                				<Route path='/stocktable' element={<StoreVechileTable />} />{" "} */}{" "}
 			</Routes>{" "}
 			<Toaster
 				position='top-center'

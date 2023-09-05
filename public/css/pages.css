@@ -259,7 +259,8 @@ a:focus {
 }
 
 .b-contacts__address {
-	margin-left: 50px;
+	width: 612px !important;
+	margin-left: -188px !important;
 }
 
 .b-contacts__address-hours {

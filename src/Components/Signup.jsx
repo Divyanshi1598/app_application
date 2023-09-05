@@ -61,7 +61,7 @@ function Signup({ loggedIn }) {
 						window.location.href = "/admin";
 					} else {
 						// Redirect to user panel
-						window.location.href = "/homepage";
+						window.location.href = "/a";
 					}
 				}
 			})
@@ -84,7 +84,6 @@ function Signup({ loggedIn }) {
 					</div>
 				</div>
 				<div className='col-5'>
-					
 					<form className='form1' onSubmit={onSubmit}>
 						<div className='form_front1'>
 							<div className='form_details1'>

@@ -85,7 +85,6 @@ h3 {
 	color: black;
 	font-weight: 600;
 	font-size: 12px;
-	font-family: "Outfit", sans-serif !important;
 	overflow: hidden !important;
 	text-overflow: ellipsis !important;
 	white-space: nowrap !important;
@@ -648,6 +647,37 @@ button:active {
 		margin-bottom: 7px;
 		margin-top: 15px;
 	}
+	.notdatafound23 {
+		margin-top: 39px !important;
+		max-height: 52px !important;
+		height: 144% !important;
+		width: 93% !important;
+		/* font-weight: 800 !important; */
+		color: white;
+		font-size: 10px !important;
+		background-color: dimgrey;
+		text-align: -webkit-center;
+		margin: 0 auto;
+		font: 100 12px "Open Sans", sans-serif;
+	}
+	.notdatafound23 h2 {
+		font-size: 15px !important;
+	}
+	.notdatafound {
+		margin-top: 39px !important;
+		max-height: 52px !important;
+		height: 144% !important;
+		width: 93% !important;
+		/* font-weight: 800 !important; */
+		color: white;
+		background-color: dimgrey;
+		text-align: center;
+		margin: 0 auto;
+		font: 600 12px "Open Sans", sans-serif;
+	}
+	.notdatafound h2 {
+		font-size: 14px;
+	}
 	.b-items {
 		padding: 0px 0 20px 0;
 	}
@@ -838,4 +868,10 @@ button:active {
 .amount_details2 {
 	font-size: 17px;
 	margin-left: 210px;
+}
+
+.imagmotors {
+	width: 157px !important;
+	margin: 0 30px;
+	display: inline-block;
 }

@@ -9,35 +9,7 @@ import PageScrollTop from "./PageScrollTop";
 import Details from "./Details";
 import ErrorPage from "./ErrorPage";
 
-function About({ reloadPage }) {
-	// const [isLoading, setIsLoading] = useState(true);
-
-	// useEffect(() => {
-	// 	if (reloadPage) {
-	// 		// Display loading message while page is reloading
-	// 		console.log("Page reloading...");
-	// 		// alert("data loading");
-	// 		// Simulate reloading by setting a timeout
-	// 		setTimeout(() => {
-	// 			setIsLoading(false); // Set loading state to false after the timeout
-	// 		}, 2000); // Change this timeout value as needed
-	// 	} else {
-	// 		setIsLoading(false); // If not reloading, set loading state to false
-	// 	}
-	// }, [reloadPage]);
-
-	// if (isLoading) {
-	// 	return (
-	// 		<div className='loading-message'>
-	// 			<div className='pageloadingsize hidden-xs'>
-	// 				<ErrorPage />
-	// 			</div>{" "}
-	// 			<div className='pageloadingsize1 visible-xs'>
-	// 				<ErrorPage />
-	// 			</div>{" "}
-	// 		</div>
-	// 	);
-	// }
+function About() {
 	return (
 		<div className=''>
 			<PageScrollTop />
@@ -141,10 +113,10 @@ function About({ reloadPage }) {
 										</div>
 										<div className='boxContent'>
 											<p className='description'>
-												We are the Welcome to our dealership, where we proudly
-												hold the title of being the largest car dealership in
-												the area. With an extensive inventory and a commitment
-												to exceptional customer service, we strive to provide an
+												Welcome to our dealership, where we proudly hold the
+												title of being the largest car dealership in the area.
+												With an extensive inventory and a commitment to
+												exceptional customer service, we strive to provide an
 												unmatched car buying experience for our valued
 												customers.
 											</p>
@@ -160,13 +132,12 @@ function About({ reloadPage }) {
 										a
 										<div className='boxContent'>
 											<p className='description'>
-												Our customer Our rigorous safety protocols cover every
-												aspect of the vehicle, from the engine to the brakes,
-												ensuring that each car undergoes thorough inspections
-												before it reaches our customers. We leave no stone
-												unturned when it comes to guaranteeing that our cars are
-												in optimal condition and meet the highest safety
-												standards.
+												Our rigorous safety protocols cover every aspect of the
+												vehicle, from the engine to the brakes, ensuring that
+												each car undergoes thorough inspections before it
+												reaches our customers. We leave no stone unturned when
+												it comes to guaranteeing that our cars are in optimal
+												condition and meet the highest safety standards.
 											</p>
 										</div>
 									</div>

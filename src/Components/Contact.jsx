@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import ReactLoading from "react-loading";
 import PageScrollTop from "./PageScrollTop";
+import ErrorPage from "./ErrorPage";
 
-const Contact = ({ loading }) => {
+const Contact = () => {
 	return (
 		<div>
 			<>
+				{/* Re-render Contact component */}
 				<PageScrollTop />
 				<div className='m-contacts'>
 					<section className='b-pageHeader'>

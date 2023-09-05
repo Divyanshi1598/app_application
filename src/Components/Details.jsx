@@ -6,12 +6,18 @@ import Item from "./Item";
 import toast from "react-hot-toast";
 import PageScrollTop from "./PageScrollTop";
 // import Modal from "react-modal";
+// import "react-swipeable-views/lib/styles.css";
 
 const breakPoints = [
 	{ width: 1, itemsToShow: 1 },
 	{ width: 550, itemsToShow: 2, itemsToScroll: 2 },
 	{ width: 768, itemsToShow: 3 },
 	{ width: 1200, itemsToShow: 3 },
+];
+
+const breakPointss = [
+	{ width: 768, itemsToShow: 2 },
+	{ width: 1200, itemsToShow: 2 },
 ];
 
 function Details({ selectedProduct }) {
@@ -36,6 +42,7 @@ function Details({ selectedProduct }) {
 	const [captchaError, setCaptchaError] = useState("");
 	const [modalOpen, setModalOpen] = useState(false);
 	const [captchaValid, setCaptchaValid] = useState(false);
+	const [inputValue, setInputValue] = useState("");
 
 	const generateNumbers = () => {
 		setNum1(Math.floor(Math.random() * 10));
@@ -49,7 +56,8 @@ function Details({ selectedProduct }) {
 		setCaptchaValid(false); // Clear captcha validation
 	};
 
-	const handleSubmit = () => {
+	const handleSubmit = (e) => {
+		e.preventDefault();
 		let formIsValid = true;
 
 		if (mobile.length !== 10) {
@@ -188,6 +196,27 @@ function Details({ selectedProduct }) {
 		closeModal();
 	};
 
+	const handleInputChange = (event) => {
+		const newValue = event.target.value;
+		const numericValue = newValue.replace(/[^0-9]/g, ""); // Remove non-numeric characters
+
+		if (numericValue.length <= 10) {
+			setmobile(numericValue);
+			setMobileError("");
+		}
+	};
+
+	const handleInputChange1 = (event) => {
+		const newValue1 = event.target.value;
+		const numericValue1 = newValue1.replace(/[^0-9]/g, ""); // Remove non-numeric characters
+
+		if (numericValue1.length <= 6) {
+			setpincode(numericValue1);
+			setMobileError("");
+			setPincodeError("");
+		}
+	};
+
 	return (
 		<>
 			<PageScrollTop />
@@ -266,19 +295,26 @@ function Details({ selectedProduct }) {
 															id='carouselExampleFade'
 															class='carousel slide carousel-fade'
 															data-bs-ride='carousel'>
-															<div class='carousel-inner'>
+															<Carousel breakPointss={breakPointss}>
 																{selectedProduct?.modelImages.map((item) => (
 																	<div
 																		class='carousel-item active'
 																		key={item.uniqueSerial}>
-																		<img
-																			src={zoom}
+																		{/* <img
+																			src={item.uri}
 																			alt='...'
-																			className='card'
+																			className=' '
+																		/> */}
+
+																		<ThreeSixty
+																			amount={75}
+																			imagePath={item.uri}
+																			fileName='output_{index}.jpeg'
+																			spinReverse
 																		/>
 																	</div>
 																))}
-															</div>
+															</Carousel>
 														</div>
 													</section>
 
@@ -569,6 +605,7 @@ function Details({ selectedProduct }) {
 															name='contactName'
 															onChange={(e) => setcontactName(e.target.value)}
 														/>
+														<br />
 														Email <span style={{ color: "red" }}>*</span>
 														<input
 															className='phone_number'
@@ -577,16 +614,15 @@ function Details({ selectedProduct }) {
 															onChange={(e) => setemail(e.target.value)}
 															name='email'
 														/>
+														<br />
 														Mobile No. <span style={{ color: "red" }}>*</span>
 														<input
 															className='phone_number'
-															type='number'
+															type='text'
 															placeholder='Please Enter Phone No.'
 															name='mobile'
-															onChange={(e) => {
-																setmobile(e.target.value);
-																setMobileError(""); // Clear the error when the user starts typing
-															}}
+															value={mobile}
+															onChange={handleInputChange}
 														/>
 														{mobileError && (
 															<span style={{ color: "red" }}>
@@ -597,13 +633,18 @@ function Details({ selectedProduct }) {
 														Pincode <span style={{ color: "red" }}>*</span>
 														<input
 															className='phone_number'
-															type='number'
+															type='text'
 															placeholder=' Please Enter Pincode'
 															name='pincode'
-															onChange={(e) => {
-																setpincode(e.target.value);
-																setPincodeError(""); // Clear the error when the user starts typing
-															}}
+															value={pincode}
+															onChange={
+																// 	(e) => {
+																// 	setpincode(e.target.value);
+																// 	setPincodeError(""); // Clear the error when the user starts typing
+																// }
+
+																handleInputChange1
+															}
 														/>
 														{pincodeError && (
 															<span style={{ color: "red" }}>

@@ -54,7 +54,7 @@ const StockCars = ({ detailspage, setDetailspage }) => {
 
 	const [currentpage, setCurrentPage] = useState(1);
 	var [homepage, setHomepage] = useState(false);
-	const itemsperpage = 18;
+	const itemsperpage = 15;
 	const totalItems = demo.length;
 	const totalPage = Math.ceil(totalItems / itemsperpage);
 
@@ -415,14 +415,13 @@ const StockCars = ({ detailspage, setDetailspage }) => {
 								<div className='prise_mn'>
 									<ul id='cardrow'>
 										<li>
-											<select
-												id='selectdata2'
-												class=''
-												value={selectedItem}
-												onChange={handleSelectChange}>
+											<select id='selectdata2' class='' value={selectedItem}>
 												<option value=''>Brand</option>
 												{data.map((item, index) => (
-													<option key={index} value={item.code}>
+													<option
+														onChange={handleSelectChange}
+														key={index}
+														value={item.code}>
 														{item.description}
 													</option>
 												))}
@@ -760,7 +759,7 @@ const StockCars = ({ detailspage, setDetailspage }) => {
 													<Row xs={12} md={3} id=''>
 														{currentData.length === 0 ? (
 															<div className='notdatafound'>
-																<p>vehicle Not Available</p>
+																<h2>Vehicle Not Available</h2>
 															</div>
 														) : (
 															<>

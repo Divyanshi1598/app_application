@@ -78,7 +78,8 @@
 }
 
 .box .description {
-	font-size: 14px;
+	font-size: 15px;
+	font-family: "Open Sans";
 	color: #fff;
 	line-height: 25px;
 }
