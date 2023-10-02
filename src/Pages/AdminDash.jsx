@@ -16,12 +16,7 @@ const AdminDash = () => {
 	return (
 		<div className=''>
 			{" "}
-			{/* <ScrollTop /> */}
 			<Admin />
-			<Routes>
-				<Route path='/Addvechils' element={<AddVechil />} />{" "}
-				<Route path='/stocktable' element={<StoreVechileTable />} />{" "}
-			</Routes>{" "}
 		</div>
 	);
 };

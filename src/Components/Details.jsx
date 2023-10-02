@@ -300,18 +300,18 @@ function Details({ selectedProduct }) {
 																	<div
 																		class='carousel-item active'
 																		key={item.uniqueSerial}>
-																		{/* <img
+																		<img
 																			src={item.uri}
 																			alt='...'
 																			className=' '
-																		/> */}
+																		/>
 
-																		<ThreeSixty
+																		{/* <ThreeSixty
 																			amount={75}
 																			imagePath={item.uri}
 																			fileName='output_{index}.jpeg'
 																			spinReverse
-																		/>
+																		/> */}
 																	</div>
 																))}
 															</Carousel>

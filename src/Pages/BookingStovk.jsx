@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from "react";
+
 import { Link } from "react-router-dom";
+
 import { Chip, Stack } from "@mui/material";
-import ReactLoading from "react-loading";
+
 import "./admin.css";
+import "./table.css";
+import ReactLoading from "react-loading";
+
 import Table from "react-bootstrap/Table";
 import DataUpload from "./DataUpload";
 import { useNavigate } from "react-router-dom";
-import styled from "./../Components/Item";
-const StoreVechileTable = ({ detailspage, setDetailspage }) => {
+
+const BookingStovk = ({ detailspage, setDetailspage }) => {
 	const [dataapi, setdataapi] = useState([]);
 	const [selectedProduct, setSelectedProduct] = useState(null);
 	const [uploadData, setuploaddata] = useState(null);
-	const [uniquekey, setUniquekey] = useState();
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -30,10 +34,10 @@ const StoreVechileTable = ({ detailspage, setDetailspage }) => {
 				companyId: "SUSHIL",
 				branchCode: "GGN01",
 				dataGroup: "STOCK",
-				dataType: "VEH_IMG_UPLOAD",
+				dataType: "VEH_ORDER",
 				dataPeriodType: "TODAY",
-				dateFrom: "2023-09-14T00:00:00",
-				dateTo: "2023-09-14T00:00:00",
+				dateFrom: "2023-09-19T00:00:00",
+				dateTo: "2023-09-19T00:00:00",
 				loginCompanyId: "SUSHIL",
 				loginCompanyAccessProfile: "DEALER_RETAIL",
 				loginEmpHierarchialGroup: "L0",
@@ -66,24 +70,59 @@ const StoreVechileTable = ({ detailspage, setDetailspage }) => {
 		fetchData();
 	}, []);
 
-	console.log(dataapi, "respo data list lead status api");
+	console.log(dataapi, "booking  list");
 	const navigate = useNavigate();
 
-	console.log(uploadData, "uploadData module jfjfkkfk");
+	useEffect(() => {
+		// Define the URL, headers, and parameters
+		const apiUrl =
+			"https://mobile.Orbitsys.com/OrbitsysSmbApiDemo/UsedCar/GetUsedCarDocModule";
+		const headers = {
+			ApplicationMode: "ONLINE",
+			EnvironmentType: "DEMO",
+			BrandCode: "UC",
+			CountryCode: "IN",
+			loginCompanyId: "SUSHIL",
+			loginUserId: "SULTAN",
+			loginIpAddress: "180.151.78.50",
+		};
+		const queryParams = {
+			uniqueSerial: "1273",
+			docModule: "UC",
+		};
+
+		// Create an array of URLSearchParams from the queryParams object
+		const searchParams = new URLSearchParams(queryParams);
+
+		// Construct the final URL by appending the query parameters
+		const finalUrl = `${apiUrl}?${searchParams.toString()}`;
+
+		// Make the API call using fetch
+		fetch(finalUrl, {
+			method: "GET",
+			headers: headers,
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				// Add default values to handle missing properties
+				// const { yourExpectedProperty = defaultValue } = data;
+				setuploaddata(data.UsedCarDocSubModules);
+				// setSelectedProduct(data.UniqueSerial);
+			})
+			.catch((error) => console.error("Error:", error));
+	}, []);
+
+	console.log(dataapi, "uploadData module jfjfkkfk bookings");
 
 	const singleProducthandle = (uniqueSerial) => {
 		const product = dataapi.find(
 			(itemdata) => itemdata.uniqueSerial === uniqueSerial
 		);
 		setSelectedProduct(product);
-		setUniquekey(product.uniqueSerial);
 		setuploaddata(product.uniqueSerial);
-		navigate(`/dataupload?uniquekey=${product.uniqueSerial}`);
-
-		console.log(product.uniqueSerial, "asdfbkjljjjjjj;");
+		navigate("/bookingform");
+		console.log(product.uniqueSerial, "asdfbkjl;");
 	};
-
-	console.log(selectedProduct, "get unique number");
 
 	return (
 		<div className=''>
@@ -92,7 +131,7 @@ const StoreVechileTable = ({ detailspage, setDetailspage }) => {
 					<div>
 						<div className=' col-xl-12 bg-dark' id='header'>
 							<div className='row row-cols-md-2 m-2 p-4 row-cols-lg-2 row-cols-xl-2 font-weight-bold'>
-								<span className='text-left text-light '>Stock Details</span>
+								<span className='text-left text-light '>Vehicle Booking</span>
 							</div>
 						</div>
 						<div
@@ -115,19 +154,12 @@ const StoreVechileTable = ({ detailspage, setDetailspage }) => {
 									}}>
 									Branch
 								</div>
+
 								<div
 									className='col-1'
 									style={{
 										padding: "18px 30px 30px",
-										marginLeft: "-10px",
-									}}>
-									Name
-								</div>
-								<div
-									className='col-1'
-									style={{
-										padding: "18px 30px 30px",
-										marginLeft: "106px",
+										marginLeft: "-5px",
 									}}>
 									Company
 								</div>
@@ -144,34 +176,27 @@ const StoreVechileTable = ({ detailspage, setDetailspage }) => {
 									className='col-1'
 									style={{
 										padding: "18px 30px 30px",
-										marginLeft: "-24px",
-									}}>
-									Model
-								</div>
-								<div
-									className='col-1'
-									style={{
-										padding: "18px 30px 30px",
-										marginLeft: "36px",
+										marginLeft: "-27px",
 									}}>
 									Odometer
 								</div>
+
 								<div
 									className='col-1'
 									style={{
 										padding: "18px 30px 30px",
-										marginLeft: "16px",
+										marginLeft: "0px",
 									}}>
 									MF. Year
 								</div>
 								<div
 									className='col-1'
 									style={{
-										width: "9%",
+										width: "13%",
 										padding: "18px 30px 30px",
-										marginLeft: "-48px",
+										marginLeft: "78px",
 									}}>
-									Phone No.
+									Registration No.
 								</div>
 
 								<div
@@ -179,7 +204,7 @@ const StoreVechileTable = ({ detailspage, setDetailspage }) => {
 									style={{
 										width: "10%",
 										padding: "18px 30px 30px",
-										marginLeft: "23px",
+										marginLeft: "5px",
 									}}>
 									Created Date
 								</div>
@@ -205,37 +230,33 @@ const StoreVechileTable = ({ detailspage, setDetailspage }) => {
 											<div
 												className='row'
 												key={itemdata.vehOwnerSerial}
-												onClick={() => {
-													singleProducthandle(itemdata.uniqueSerial);
-												}}>
+												onClick={() =>
+													singleProducthandle(itemdata.uniqueSerial)
+												}>
 												<div
 													className='col-1'
 													style={{ padding: "18px 30px 30px", width: "5%" }}>
 													{itemdata.uniqueSerial}
 												</div>
-
 												<div
 													className='col-1'
 													style={{ padding: "18px 30px 30px" }}>
 													{itemdata.branchName}{" "}
 												</div>
+
 												<div
 													className='col-1'
-													style={{
-														width: "     16%",
-														padding: "18px 30px 30px",
-													}}>
-													{itemdata.vehOwnerName}
-												</div>
-												<div
-													className='col-1'
-													style={{ width: "7%", padding: "18px 30px 30px" }}>
+													style={{ width: "6%", padding: "18px 30px 30px" }}>
 													{itemdata.dlrCompanyId}
 												</div>
 
 												<div
 													className='col-1'
-													style={{ padding: "18px 30px 30px", width: "6%" }}>
+													style={{
+														padding: "18px 30px 30px",
+														width: "6%",
+														marginLeft: "20px",
+													}}>
 													<p style={{ margingTop: "0px" }}>
 														{itemdata.vehBrand.description}
 													</p>
@@ -243,16 +264,7 @@ const StoreVechileTable = ({ detailspage, setDetailspage }) => {
 
 												<div
 													className='col-1'
-													style={{ width: "12%", padding: "18px 30px 30px" }}>
-													<p style={{ margingTop: "0px" }}>
-														{" "}
-														{itemdata.vehModel.description}
-													</p>
-												</div>
-
-												<div
-													className='col-1'
-													style={{ width: " 9%", padding: "18px 30px 30px" }}>
+													style={{ width: " 7%", padding: "18px 30px 30px" }}>
 													<div className='d-flex'>
 														<img
 															style={{ color: "green" }}
@@ -268,12 +280,16 @@ const StoreVechileTable = ({ detailspage, setDetailspage }) => {
 												</div>
 												<div
 													className='col-1'
-													style={{ width: "4%", padding: "18px 30px 30px" }}>
+													style={{
+														width: "13%",
+														padding: "18px 30px 30px",
+														marginLeft: "38px",
+													}}>
 													<p> {itemdata.vehManufactureYear.description}</p>
 												</div>
 												<div
 													className='col-1'
-													style={{ width: "11%", padding: "18px 30px 30px" }}>
+													style={{ width: "13%", padding: "18px 30px 30px" }}>
 													<p>{itemdata.vehRegnNo}</p>
 												</div>
 
@@ -305,4 +321,4 @@ const StoreVechileTable = ({ detailspage, setDetailspage }) => {
 	);
 };
 
-export default StoreVechileTable;
+export default BookingStovk;

@@ -1,4 +1,3 @@
-// import "./styles.css";
 import About from "./Components/About";
 import {
 	BrowserRouter as Router,
@@ -29,60 +28,49 @@ import DashBoard from "./DashBoard";
 import Admin from "./Pages/Admin";
 import CarLoan from "./Components/CarLoan";
 import "./App.css";
-// import AddVechil from "./Pages/AddVechil";
-// import StoreVechileTable from "./Pages/StoreVechileTable";
-// import AdminDash from "./Pages/AdminDash";
+import AddVechil from "./Pages/AddVechil";
+import AdminDash from "./Pages/AdminDash";
 import { Header, Container } from "react-bootstrap";
 import ReactLoading from "react-loading";
 import { useState, useEffect } from "react";
 import ErrorPage from "./Components/ErrorPage";
+import DataUpload from "./Pages/DataUpload";
+import StoreVechileTable from "./Pages/StoreVechileTable";
+import BookingForm from "./Pages/BookingForm";
+import DeleveryForm from "./Pages/DeleveryForm";
+import Deleverystock from "./Pages/Deleverystock";
+import OpenImage from "./Pages/OpenImage";
 
 export default function App({ isLoggedIn }) {
 	const [isLoading, setIsLoading] = useState(true);
 	const [detailspage, setDetailspage] = useState(false);
 	const reloadPage = () => {
 		window.location.reload();
-		// toast.success("Page  Loading ! ");
 	};
 	const handleHomeClick = () => {
-		setDetailspage(false); // Set detailspage to false when clicking on HOME
+		setDetailspage(false);
 	};
 	useEffect(() => {
 		if (reloadPage) {
-			// Display loading message while page is reloading
 			console.log("Page reloading...");
-			// alert("data loading");
-			// Simulate reloading by setting a timeout
+
 			setTimeout(() => {
-				setIsLoading(false); // Set loading state to false after the timeout
-			}, 1000); // Change this timeout value as needed
+				setIsLoading(false);
+			}, 1000);
 		} else {
-			setIsLoading(false); // If not reloading, set loading state to false
+			setIsLoading(false);
 		}
 	}, [reloadPage]);
-
-	// if (isLoading) {
-	// 	return (
-	// 		<div className='loading-message'>
-	// 			<div className='pageloadingsize hidden-xs'>
-	// 				<ErrorPage />
-	// 			</div>{" "}
-	// 			<div className='pageloadingsize1 visible-xs'>
-	// 				<ErrorPage />
-	// 			</div>{" "}
-	// 		</div>
-	// 	);
-	// }
 
 	return (
 		<div className=''>
 			{" "}
-			<ScrollTop />
-			<div className='fixed-top'>
-				<Navbar onHomeClick={handleHomeClick} />{" "}
-			</div>{" "}
+			<ScrollTop />{" "}
+			{/* <div className='fixed-top'
+                                    			<Navbar onHomeClick={handleHomeClick} />{" "}
+                                    			</div>{" "} */}{" "}
 			<Routes>
-				<Route exact path='/uii' element={<Signup />} exact />{" "}
+				<Route exact path='/login' element={<Signup />} exact />{" "}
 				<Route exact path='/admin' element={<AdminDash />} exact />{" "}
 				<Route
 					exact
@@ -117,11 +105,16 @@ export default function App({ isLoggedIn }) {
 					}
 				/>{" "}
 				<Route path='/details' element={<Details />} />{" "}
+				<Route path='/openimage' element={<OpenImage />} />{" "}
 				<Route path='/emical' element={<EmiCalculator />} />{" "}
 				<Route path='/submit2' element={<Submit2 />} />{" "}
 				<Route path='/carloans' element={<CarLoan />} />{" "}
-				{/* <Route path='/Addvechils' element={<AddVechil />} />{" "}
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                				<Route path='/stocktable' element={<StoreVechileTable />} />{" "} */}{" "}
+				<Route path='/Addvechils' element={<AddVechil />} />{" "}
+				<Route path='/dataupload' element={<DataUpload />} />{" "}
+				<Route path='/deleveryform' element={<DeleveryForm />} />{" "}
+				<Route path='/bookingform' element={<BookingForm />} />{" "}
+				<Route path='/stocktable' element={<StoreVechileTable />} />{" "}
+				<Route path='/deleveryhome' element={<Deleverystock />} />{" "}
 			</Routes>{" "}
 			<Toaster
 				position='top-center'
@@ -146,7 +139,7 @@ export default function App({ isLoggedIn }) {
 					},
 				}}
 			/>{" "}
-			<Footer />
+			{/* <Footer />{" "} */}{" "}
 		</div>
 	);
 }

@@ -241,6 +241,7 @@ export default function HomePage({ detailspage, setDetailspage }) {
 		setSelectedProduct(product);
 		setDetailspage((product) => !product);
 	};
+	console.log(selectedProduct, "selectedProduct fatat home");
 
 	const fetchData = async () => {
 		const url =

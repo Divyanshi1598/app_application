@@ -5,18 +5,17 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import UpgradeIcon from "@mui/icons-material/Upgrade";
 
 function EvalutionImage() {
-	const maxNumber = 69;
-
+	// Separate state variables for each document type
 	const [adharFrontImages, setAdharFrontImages] = useState([]);
 	const [adharBackImages, setAdharBackImages] = useState([]);
 	const [panCardImages, setPanCardImages] = useState([]);
 	const [passportImages, setPassportImages] = useState([]);
 	const [secondIdImages, setSecondIdImages] = useState([]);
 	const [showCameraIcon, setShowCameraIcon] = useState(true);
-
-	const [dataimage, setdataimage] = useState(null);
 	const [selectedFiles, setSelectedFiles] = useState([]);
 	const [selectedFiles1, setSelectedFiles1] = useState([]);
+
+	const [dataimage, setdataimage] = useState(null);
 
 	useEffect(() => {
 		// Define the URL, headers, and parameters
@@ -71,13 +70,17 @@ function EvalutionImage() {
 		setSelectedFiles(updatedSelectedFiles);
 		setSelectedFiles1(updatedSelectedFiles);
 	};
+
 	return (
 		<div className='tabdatasize'>
 			<div className='row'>
 				{dataimage
-					?.filter((item, index) => item.SubModuleCode === "FINAL_IMG")
+					?.filter((item, index) => item.SubModuleCode === "EVLTN_IMG")
 					.map((item, index) => (
 						<>
+							{console.log(item.DocGroups[1].DocGroupDescription, "evalution")}
+							{console.log(item.DocGroups[0].DocCodes[1].DocDescription, "evl")}
+							<h3>{item.DocGroups[0].DocGroupDescription}</h3>
 							<div className='col-1' key={item.DisplaySerial}>
 								<input
 									type='file'
@@ -115,6 +118,7 @@ function EvalutionImage() {
 									style={{ display: "none" }}
 									onChange={(e) => handleFileChange(index, e)}
 								/>
+								{/* Display the selected image if available */}
 								{selectedFiles[index] ? (
 									<img
 										src={URL.createObjectURL(selectedFiles[index])}
@@ -122,6 +126,7 @@ function EvalutionImage() {
 										onClick={() => handleImageClick(index)}
 									/>
 								) : (
+									// Display the initial image
 									<img
 										src={
 											item.DocGroups[0].DocCodes[1].AzureUri !== null
@@ -143,6 +148,7 @@ function EvalutionImage() {
 									style={{ display: "none" }}
 									onChange={(e) => handleFileChange(index, e)}
 								/>
+								{/* Display the selected image if available */}
 								{selectedFiles[index] ? (
 									<img
 										src={URL.createObjectURL(selectedFiles[index])}
@@ -150,6 +156,7 @@ function EvalutionImage() {
 										onClick={() => handleImageClick(index)}
 									/>
 								) : (
+									// Display the initial image
 									<img
 										src={
 											item.DocGroups[0].DocCodes[2].AzureUri !== null
@@ -171,6 +178,7 @@ function EvalutionImage() {
 									style={{ display: "none" }}
 									onChange={(e) => handleFileChange(index, e)}
 								/>
+								{/* Display the selected image if available */}
 								{selectedFiles[index] ? (
 									<img
 										src={URL.createObjectURL(selectedFiles[index])}
@@ -178,6 +186,7 @@ function EvalutionImage() {
 										onClick={() => handleImageClick(index)}
 									/>
 								) : (
+									// Display the initial image
 									<img
 										src={
 											item.DocGroups[0].DocCodes[3].AzureUri !== null
@@ -199,6 +208,7 @@ function EvalutionImage() {
 									style={{ display: "none" }}
 									onChange={(e) => handleFileChange(index, e)}
 								/>
+								{/* Display the selected image if available */}
 								{selectedFiles[index] ? (
 									<img
 										src={URL.createObjectURL(selectedFiles[index])}
@@ -206,6 +216,7 @@ function EvalutionImage() {
 										onClick={() => handleImageClick(index)}
 									/>
 								) : (
+									// Display the initial image
 									<img
 										src={
 											item.DocGroups[0].DocCodes[4].AzureUri !== null
@@ -227,6 +238,7 @@ function EvalutionImage() {
 									style={{ display: "none" }}
 									onChange={(e) => handleFileChange(index, e)}
 								/>
+								{/* Display the selected image if available */}
 								{selectedFiles[index] ? (
 									<img
 										src={URL.createObjectURL(selectedFiles[index])}
@@ -234,6 +246,7 @@ function EvalutionImage() {
 										onClick={() => handleImageClick(index)}
 									/>
 								) : (
+									// Display the initial image
 									<img
 										src={
 											item.DocGroups[0].DocCodes[5].AzureUri !== null
@@ -255,6 +268,7 @@ function EvalutionImage() {
 									style={{ display: "none" }}
 									onChange={(e) => handleFileChange(index, e)}
 								/>
+								{/* Display the selected image if available */}
 								{selectedFiles[index] ? (
 									<img
 										src={URL.createObjectURL(selectedFiles[index])}
@@ -262,6 +276,7 @@ function EvalutionImage() {
 										onClick={() => handleImageClick(index)}
 									/>
 								) : (
+									// Display the initial image
 									<img
 										src={
 											item.DocGroups[0].DocCodes[6].AzureUri !== null
@@ -283,6 +298,7 @@ function EvalutionImage() {
 									style={{ display: "none" }}
 									onChange={(e) => handleFileChange(index, e)}
 								/>
+								{/* Display the selected image if available */}
 								{selectedFiles[index] ? (
 									<img
 										src={URL.createObjectURL(selectedFiles[index])}
@@ -290,6 +306,7 @@ function EvalutionImage() {
 										onClick={() => handleImageClick(index)}
 									/>
 								) : (
+									// Display the initial image
 									<img
 										src={
 											item.DocGroups[0].DocCodes[7].AzureUri !== null
@@ -304,13 +321,19 @@ function EvalutionImage() {
 								<h5>{item.DocGroups[0].DocCodes[7].DocDescription}</h5>
 							</div>
 
-							<div className='col-1' key={item.DisplaySerial}>
+							{/* interior */}
+
+							<h3>{item.DocGroups[1].DocGroupDescription}</h3>
+							{console.log(item.DocGroups[1].DocCodes[0].DocDescription, "evl")}
+
+							<div className='col-2' key={item.DisplaySerial}>
 								<input
 									type='file'
 									id={`fileInput_${index}`}
 									style={{ display: "none" }}
 									onChange={(e) => handleFileChange(index, e)}
 								/>
+								{/* Display the selected image if available */}
 								{selectedFiles[index] ? (
 									<img
 										src={URL.createObjectURL(selectedFiles[index])}
@@ -318,18 +341,19 @@ function EvalutionImage() {
 										onClick={() => handleImageClick(index)}
 									/>
 								) : (
+									// Display the initial image
 									<img
 										src={
-											item.DocGroups[0].DocCodes[8].AzureUri !== null
-												? item.DocGroups[0].DocCodes[8].AzureUri
-												: item.DocGroups[0].DocCodes[8].DocTypeIconPath
+											item.DocGroups[1].DocCodes[0].AzureUri !== null
+												? item.DocGroups[1].DocCodes[0].AzureUri
+												: item.DocGroups[1].DocCodes[0].DocTypeIconPath
 										}
 										alt='AzureUri'
 										onClick={() => handleImageClick(index)}
 									/>
 								)}
 
-								<h5>{item.DocGroups[0].DocCodes[8].DocDescription}</h5>
+								<h5>{item.DocGroups[1].DocCodes[0].DocDescription}</h5>
 							</div>
 
 							<div className='col-1' key={item.DisplaySerial}>
@@ -339,6 +363,7 @@ function EvalutionImage() {
 									style={{ display: "none" }}
 									onChange={(e) => handleFileChange(index, e)}
 								/>
+								{/* Display the selected image if available */}
 								{selectedFiles[index] ? (
 									<img
 										src={URL.createObjectURL(selectedFiles[index])}
@@ -346,45 +371,19 @@ function EvalutionImage() {
 										onClick={() => handleImageClick(index)}
 									/>
 								) : (
+									// Display the initial image
 									<img
 										src={
-											item.DocGroups[0].DocCodes[9].AzureUri !== null
-												? item.DocGroups[0].DocCodes[9].AzureUri
-												: item.DocGroups[0].DocCodes[9].DocTypeIconPath
+											item.DocGroups[1].DocCodes[1].AzureUri !== null
+												? item.DocGroups[1].DocCodes[1].AzureUri
+												: item.DocGroups[1].DocCodes[1].DocTypeIconPath
 										}
 										alt='AzureUri'
 										onClick={() => handleImageClick(index)}
 									/>
 								)}
 
-								<h5>{item.DocGroups[0].DocCodes[9].DocDescription}</h5>
-							</div>
-							<div className='col-1' key={item.DisplaySerial}>
-								<input
-									type='file'
-									id={`fileInput_${index}`}
-									style={{ display: "none" }}
-									onChange={(e) => handleFileChange(index, e)}
-								/>
-								{selectedFiles[index] ? (
-									<img
-										src={URL.createObjectURL(selectedFiles[index])}
-										alt='Selected Image'
-										onClick={() => handleImageClick(index)}
-									/>
-								) : (
-									<img
-										src={
-											item.DocGroups[0].DocCodes[10].AzureUri !== null
-												? item.DocGroups[0].DocCodes[10].AzureUri
-												: item.DocGroups[0].DocCodes[10].DocTypeIconPath
-										}
-										alt='AzureUri'
-										onClick={() => handleImageClick(index)}
-									/>
-								)}
-
-								<h5>{item.DocGroups[0].DocCodes[10].DocDescription}</h5>
+								<h5>{item.DocGroups[1].DocCodes[1].DocDescription}</h5>
 							</div>
 
 							<div className='col-1' key={item.DisplaySerial}>
@@ -394,6 +393,7 @@ function EvalutionImage() {
 									style={{ display: "none" }}
 									onChange={(e) => handleFileChange(index, e)}
 								/>
+								{/* Display the selected image if available */}
 								{selectedFiles[index] ? (
 									<img
 										src={URL.createObjectURL(selectedFiles[index])}
@@ -401,18 +401,19 @@ function EvalutionImage() {
 										onClick={() => handleImageClick(index)}
 									/>
 								) : (
+									// Display the initial image
 									<img
 										src={
-											item.DocGroups[0].DocCodes[11].AzureUri !== null
-												? item.DocGroups[0].DocCodes[11].AzureUri
-												: item.DocGroups[0].DocCodes[11].DocTypeIconPath
+											item.DocGroups[1].DocCodes[2].AzureUri !== null
+												? item.DocGroups[1].DocCodes[2].AzureUri
+												: item.DocGroups[1].DocCodes[2].DocTypeIconPath
 										}
 										alt='AzureUri'
 										onClick={() => handleImageClick(index)}
 									/>
 								)}
 
-								<h5>{item.DocGroups[0].DocCodes[11].DocDescription}</h5>
+								<h5>{item.DocGroups[1].DocCodes[2].DocDescription}</h5>
 							</div>
 
 							<div className='col-1' key={item.DisplaySerial}>
@@ -422,6 +423,7 @@ function EvalutionImage() {
 									style={{ display: "none" }}
 									onChange={(e) => handleFileChange(index, e)}
 								/>
+								{/* Display the selected image if available */}
 								{selectedFiles[index] ? (
 									<img
 										src={URL.createObjectURL(selectedFiles[index])}
@@ -429,18 +431,19 @@ function EvalutionImage() {
 										onClick={() => handleImageClick(index)}
 									/>
 								) : (
+									// Display the initial image
 									<img
 										src={
-											item.DocGroups[0].DocCodes[12].AzureUri !== null
-												? item.DocGroups[0].DocCodes[12].AzureUri
-												: item.DocGroups[0].DocCodes[12].DocTypeIconPath
+											item.DocGroups[1].DocCodes[3].AzureUri !== null
+												? item.DocGroups[1].DocCodes[3].AzureUri
+												: item.DocGroups[1].DocCodes[3].DocTypeIconPath
 										}
 										alt='AzureUri'
 										onClick={() => handleImageClick(index)}
 									/>
 								)}
 
-								<h5>{item.DocGroups[0].DocCodes[12].DocDescription}</h5>
+								<h5>{item.DocGroups[1].DocCodes[3].DocDescription}</h5>
 							</div>
 
 							<div className='col-1' key={item.DisplaySerial}>
@@ -450,6 +453,7 @@ function EvalutionImage() {
 									style={{ display: "none" }}
 									onChange={(e) => handleFileChange(index, e)}
 								/>
+								{/* Display the selected image if available */}
 								{selectedFiles[index] ? (
 									<img
 										src={URL.createObjectURL(selectedFiles[index])}
@@ -457,18 +461,19 @@ function EvalutionImage() {
 										onClick={() => handleImageClick(index)}
 									/>
 								) : (
+									// Display the initial image
 									<img
 										src={
-											item.DocGroups[0].DocCodes[13].AzureUri !== null
-												? item.DocGroups[0].DocCodes[13].AzureUri
-												: item.DocGroups[0].DocCodes[13].DocTypeIconPath
+											item.DocGroups[1].DocCodes[4].AzureUri !== null
+												? item.DocGroups[1].DocCodes[4].AzureUri
+												: item.DocGroups[1].DocCodes[4].DocTypeIconPath
 										}
 										alt='AzureUri'
 										onClick={() => handleImageClick(index)}
 									/>
 								)}
 
-								<h5>{item.DocGroups[0].DocCodes[13].DocDescription}</h5>
+								<h5>{item.DocGroups[1].DocCodes[4].DocDescription}</h5>
 							</div>
 
 							<div className='col-1' key={item.DisplaySerial}>
@@ -478,6 +483,7 @@ function EvalutionImage() {
 									style={{ display: "none" }}
 									onChange={(e) => handleFileChange(index, e)}
 								/>
+								{/* Display the selected image if available */}
 								{selectedFiles[index] ? (
 									<img
 										src={URL.createObjectURL(selectedFiles[index])}
@@ -485,18 +491,19 @@ function EvalutionImage() {
 										onClick={() => handleImageClick(index)}
 									/>
 								) : (
+									// Display the initial image
 									<img
 										src={
-											item.DocGroups[0].DocCodes[14].AzureUri !== null
-												? item.DocGroups[0].DocCodes[14].AzureUri
-												: item.DocGroups[0].DocCodes[14].DocTypeIconPath
+											item.DocGroups[2].DocCodes[0].AzureUri !== null
+												? item.DocGroups[2].DocCodes[0].AzureUri
+												: item.DocGroups[2].DocCodes[0].DocTypeIconPath
 										}
 										alt='AzureUri'
 										onClick={() => handleImageClick(index)}
 									/>
 								)}
 
-								<h5>{item.DocGroups[0].DocCodes[14].DocDescription}</h5>
+								<h5>{item.DocGroups[2].DocCodes[0].DocDescription}</h5>
 							</div>
 
 							<div className='col-1' key={item.DisplaySerial}>
@@ -506,6 +513,7 @@ function EvalutionImage() {
 									style={{ display: "none" }}
 									onChange={(e) => handleFileChange(index, e)}
 								/>
+								{/* Display the selected image if available */}
 								{selectedFiles[index] ? (
 									<img
 										src={URL.createObjectURL(selectedFiles[index])}
@@ -513,22 +521,20 @@ function EvalutionImage() {
 										onClick={() => handleImageClick(index)}
 									/>
 								) : (
+									// Display the initial image
 									<img
 										src={
-											item.DocGroups[0].DocCodes[15].AzureUri !== null
-												? item.DocGroups[0].DocCodes[15].AzureUri
-												: item.DocGroups[0].DocCodes[15].DocTypeIconPath
+											item.DocGroups[3].DocCodes[0].AzureUri !== null
+												? item.DocGroups[3].DocCodes[0].AzureUri
+												: item.DocGroups[3].DocCodes[0].DocTypeIconPath
 										}
 										alt='AzureUri'
 										onClick={() => handleImageClick(index)}
 									/>
 								)}
 
-								<h5>{item.DocGroups[0].DocCodes[15].DocDescription}</h5>
+								<h5>{item.DocGroups[3].DocCodes[0].DocDescription}</h5>
 							</div>
-
-							<br />
-							<br />
 						</>
 					))}
 			</div>

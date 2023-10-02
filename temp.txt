@@ -1,193 +1,276 @@
-i want when ever  i click Home nav  state page==false will setdetails(page) will call this is my homepage.json
+i have a component StoreVechileTable in which i have a state uniquekey which i am setting in function singleProducthandle  and on the excution of function i am navigating on another component Uploadimage using navigate("/dataupload") i want to pass the value of sate uniquekey in Uploadimage component
 import React, { useState, useEffect } from "react";
-import CarLoan from "./CarLoan";
-import Gellery from "./Gellery";
-import { Link, useNavigate } from "react-router-dom";
-import { Row, Col } from "react-bootstrap";
-import Navbar from "./Navbar";
-import Carousel from "react-elastic-carousel";
-import Item from "./Item";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./detail.css";
-import PageScrollTop from "./PageScrollTop";
-import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
+import { Chip, Stack } from "@mui/material";
 import ReactLoading from "react-loading";
-import { useLocation } from "react-router-dom";
-import Details from "./Details";
-import { styled } from "@mui/material/styles";
-export default function HomePage({ page }) {
-	useEffect(() => {
-		const url =
-			"https://mobile.Orbitsys.com/OrbitsysSmbApiDemo/UsedCar/GetGeneralMaster";
-		const headers = {
-			ApplicationMode: "ONLINE",
-			EnvironmentType: "DEMO",
-			BrandCode: "UC",
-			CountryCode: "IN",
-			"Content-Type": "application/json",
-		};
-		const data = {
-			brandCode: "UC",
-			countryCode: "IN",
-			companyId: "SUSHIL",
-			calledBy: "MAKE",
-			loginUserId: "RAVI",
-			loginIpAddress: "180.151.78.50",
-		};
+import "./admin.css";
+import Table from "react-bootstrap/Table";
+import DataUpload from "./DataUpload";
+import { useNavigate } from "react-router-dom";
+import styled from "./../Components/Item";
 
-		fetch(url, {
-			method: "POST",
-			headers: headers,
-			body: JSON.stringify(data),
-		})
-			.then((response) => {
+const StoreVechileTable = ({ detailspage, setDetailspage }) => {
+	const [dataapi, setdataapi] = useState([]);
+	const [selectedProduct, setSelectedProduct] = useState(null);
+	const [uploadData, setuploaddata] = useState(null);
+	const [uniquekey, setUniquekey] = useState();
+
+	useEffect(() => {
+		const fetchData = async () => {
+			const url =
+				"https://mobile.Orbitsys.com/OrbitsysSmbApiDemo/UsedCar/GetUsedCarLeadsByStatus";
+			const headers = {
+				ApplicationMode: "ONLINE",
+				EnvironmentType: "DEMO",
+				BrandCode: "UC",
+				CountryCode: "IN",
+				"Content-Type": "application/json",
+			};
+			const data = {
+				brandCode: "UC",
+				countryCode: "IN",
+				companyId: "SUSHIL",
+				branchCode: "GGN01",
+				dataGroup: "STOCK",
+				dataType: "VEH_IMG_UPLOAD",
+				dataPeriodType: "TODAY",
+				dateFrom: "2023-09-14T00:00:00",
+				dateTo: "2023-09-14T00:00:00",
+				loginCompanyId: "SUSHIL",
+				loginCompanyAccessProfile: "DEALER_RETAIL",
+				loginEmpHierarchialGroup: "L0",
+				loginEmpCode: "E11183",
+				loginJobTypeCode: "MGT",
+				loginUserId: "SULTAN",
+				loginIpAddress: "180.151.78.50",
+			};
+
+			try {
+				const response = await fetch(url, {
+					method: "POST",
+					headers: headers,
+					body: JSON.stringify(data),
+				});
+
 				if (response.ok) {
-					return response.json();
+					const responseData = await response.json();
+					setdataapi(responseData.usedCarLeads);
+
+					// setDemo(responseData?.UsedCarVehStockDetail);
 				} else {
 					throw new Error(
-						`Request failed with status code: ${response.status}`
+						`Request failed with status code: ${response.status}`()
 					);
 				}
-			})
-			.then((jsonData) => {
-				const generalList = jsonData?.generalMasterList[0].generalList;
-				setData(generalList);
-			})
-			.catch((error) => {
-				console.error(error);
-			});
-			setdetailspage(page)
+			} catch (error) {
+				console.error("Error:", error);
+			}
+		};
+
+		fetchData();
 	}, []);
+
+	console.log(dataapi, "respo data list lead status api");
+	const navigate = useNavigate();
+
+	console.log(uploadData, "uploadData module jfjfkkfk");
+
+	const singleProducthandle = (uniqueSerial) => {
+		const product = dataapi.find(
+			(itemdata) => itemdata.uniqueSerial === uniqueSerial
+		);
+		setSelectedProduct(product);
+		setUniquekey(product.uniqueSerial);
+		setuploaddata(product.uniqueSerial);
+		// setDetailspage((product) => !product);
+		navigate("/dataupload");
+
+		console.log(product.uniqueSerial, "asdfbkjljjjjjj;");
+	};
+
+	
+	console.log(selectedProduct, "get unique number");
+
 	return (
 		<div className=''>
-			<PageScrollTop />
-
-			{detailspage === false ? (
+			<>
 				<>
 					<div>
+						<div className=' col-xl-12 bg-dark' id='header'>
+							<div className='row row-cols-md-2 m-2 p-4 row-cols-lg-2 row-cols-xl-2 font-weight-bold'>
+								<span className='text-left text-light '>Stock Details</span>
+							</div>
+						</div>
+
+						{dataapi.length === 0 ? (
+							<>
+								<div style={{ marginLeft: "600px", marginTop: "146px" }}>
+									<ReactLoading
+										type='spin'
+										color='#f76d2b'
+										height={200}
+										width={200}
+									/>
+								</div>
+							</>
+						) : (
+							<>
+								{dataapi.map((itemdata) => (
+									<div className='listingdata' style={{ marginTop: "20px" }}>
+										<div className=''>
+											<div
+												className='row'
+												key={itemdata.vehOwnerSerial}
+												onClick={() => {
+													singleProducthandle(itemdata.uniqueSerial);
+												}}>
+												<div
+													className='col-1'
+													style={{ padding: "18px 30px 30px", width: "5%" }}>
+													{itemdata.uniqueSerial}
+												</div>
+
+												<div
+													className='col-1'
+													style={{ padding: "18px 30px 30px" }}>
+													{itemdata.branchName}{" "}
+												</div>
+												<div
+													className='col-1'
+													style={{
+														width: "     16%",
+														padding: "18px 30px 30px",
+													}}>
+													{itemdata.vehOwnerName}
+												</div>
+												<div
+													className='col-1'
+													style={{ width: "7%", padding: "18px 30px 30px" }}>
+													{itemdata.dlrCompanyId}
+												</div>
+
+												<div
+													className='col-1'
+													style={{ padding: "18px 30px 30px", width: "6%" }}>
+													<p style={{ margingTop: "0px" }}>
+														{itemdata.vehBrand.description}
+													</p>
+												</div>
+
+												<div
+													className='col-1'
+													style={{ width: "12%", padding: "18px 30px 30px" }}>
+													<p style={{ margingTop: "0px" }}>
+														{" "}
+														{itemdata.vehModel.description}
+													</p>
+												</div>
+
+												<div
+													className='col-1'
+													style={{ width: " 9%", padding: "18px 30px 30px" }}>
+													<div className='d-flex'>
+														<img
+															style={{ color: "green" }}
+															id='imagapiicon'
+															src={itemdata.odometerIcon}
+															alt='mfyearicon'
+														/>{" "}
+														<p style={{ marginLeft: "6px" }}>
+															{" "}
+															{itemdata.vehOdometer}
+														</p>
+													</div>
+												</div>
+												<div
+													className='col-1'
+													style={{ width: "4%", padding: "18px 30px 30px" }}>
+													<p> {itemdata.vehManufactureYear.description}</p>
+												</div>
+												<div
+													className='col-1'
+													style={{ width: "11%", padding: "18px 30px 30px" }}>
+													<p>{itemdata.vehRegnNo}</p>
+												</div>
+
+												<div
+													className='col-3'
+													style={{ width: "21%", padding: "18px 30px 30px" }}>
+													{" "}
+													{itemdata.createDate &&
+														new Date(itemdata.createDate).toLocaleDateString(
+															"en-US",
+															{
+																day: "numeric",
+																weekday: "long",
+																year: "numeric",
+																month: "long",
+															}
+														)}
+												</div>
+											</div>
+										</div>
+									</div>
+								))}
+							</>
+						)}
 					</div>
 				</>
-			) : (
-				<>
-					{selectedProduct ? (
-						<Details selectedProduct={selectedProduct} />
-					) : (
-						<div></div>
-					)}
-				</>
-			)}
+			</>
 		</div>
 	);
-}
-
-this is navbar.js import React, { useRef } from "react";
-import { Link } from "react-router-dom";
-import "./navbar.css";
-const Navbar = ({ onPageChange }) => {
-  const navRef = useRef();
-
-  const showNavbar = () => {
-    navRef.current.classList.toggle("responsive_nav");
-  };
-
-  const reloadPage = () => {
-    onPageChange(); // Call the prop function to update the page state in App
-    // window.location.reload();
-  };
-
-  return (
-    <header className='fixed-top'>
-      <Link to='/'>
-        <img className='' src='images/logo/logo-1.png' alt='logo' />
-      </Link>
-      <nav className='' ref={navRef}>
-        <Link to='/' onClick={showNavbar}>
-          <span onClick={reloadPage}>HOME</span>
-        </Link>
-        <button className='nav-btn nav-close-btn visible-xs' onClick={showNavbar}>
-          <i className='fa-solid fa-xmark'></i>
-        </button>
-      </nav>
-      <button className='nav-btn visible-xs' onClick={showNavbar}>
-        <i className='fa-solid fa-bars'></i>
-      </button>
-    </header>
-  );
 };
-export default Navbar;
 
-this App.js 
-import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
-import Navbar from "./Components/Navbar";
-import HomePage from "./Components/HomePage";
-import About from "./Components/About";
-import Submit1 from "./Components/Submit1";
-import ListTableTwo from "./Components/ListTableTwo";
-import Notification from "./Components/Notification";
-import Contact from "./Components/Contact";
-import StockCars from "./Components/StockCars";
-import Details from "./Components/Details";
-import EmiCalculator from "./Components/EmiCalculator";
-import Submit2 from "./Components/Submit2";
-import CarLoan from "./Components/CarLoan";
-import Footer from "./Components/Footer"; // Assuming you have a Footer component
-import { Toaster } from "react-hot-toast"; // Assuming you're using react-hot-toast
+export default StoreVechileTable;
 
-export default function App({ isLoggedIn }) {
-  const [isLoading, setIsLoading] = useState(true);
-  const [page, setPage] = useState(false);
 
-  const handlePageChange = () => {
-    // setPage(prevPage => !prevPage);
-	setPage(false);
-    console.log("Page state:", page);
-  };
 
-  useEffect(() => {
-    if (isLoading) {
-      console.log("Page reloading...");
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 1000);
-    } else {
-      setIsLoading(false);
-    }
-	
-  }, [isLoading, page]);
 
-  if (isLoading) {
-    return <div className='loading-message'></div>;
-  }
 
-  return (
-    <div>
-      <div className='fixed-top'>
-        <Navbar onPageChange={handlePageChange} />
-      </div>
-      {" "}
-        <Routes>
-          <Route
-            path='/'
-            element={
-              <HomePage
-                page={page}
-                onPageChange={handlePageChange}
-              />
-            }
-          />
-          <Route path='/about' element={<About />} />
-          <Route path='/salecar' element={<Submit1 />} />
-          <Route path='/buycar' element={<ListTableTwo />} />
-          <Route path='/notification' element={<Notification />} />
-          <Route path='/contact' element={<Contact />} />
-          <Route path='/detailsdata' element={<StockCars />} />
-          <Route path='/details' element={<Details />} />
-          <Route path='/emical' element={<EmiCalculator />} />
-          <Route path='/submit2' element={<Submit2 />} />
-          <Route path='/carloans' element={<CarLoan />} />
-        </Routes>
-    </div>
-  );
-}
 
+
+in below component i want to recive data uniquekey which is passed by  Uploadimage component
+
+
+
+import React from "react";
+import Tab from "react-bootstrap/Tab";
+import Tabs from "react-bootstrap/Tabs";
+import ImageUploadData from "./ImageUploadData";
+import { Link } from "react-router-dom";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import Admin from "./Admin";
+import Features from "./Features";
+
+const DataUpload = () => {
+	return (
+		<div classNmae=''>
+			<div class=''>
+				<Link style={{ color: "black", marginLeft: "-10px" }} to='/admin'>
+					<ArrowBackIcon style={{ marginRight: "41px", fontSize: "30px" }} />
+				</Link>{" "}
+				<Tabs
+					defaultActiveKey='profile1'
+					transition={false}
+					id='noanim-tab-example'
+					variant='pills'
+					className='adminbtn1'>
+					<Tab
+						eventKey='profile1'
+						title='Image Upload'
+						style={{ background: "white", marginTop: "40px" }}>
+						<ImageUploadData />
+					</Tab>
+					<Tab
+						eventKey='contact'
+						title='Features'
+						style={{ background: "white", marginTop: "70px" }}>
+						<Features />
+					</Tab>
+				</Tabs>
+			</div>
+		</div>
+	);
+};
+
+export default DataUpload;

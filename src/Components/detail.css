@@ -11,6 +11,7 @@ img {
 	height: 100%;
 }
 
+
 @media screen and (min-width: 576px) {
 	.carousel-inner {
 		display: flex;
